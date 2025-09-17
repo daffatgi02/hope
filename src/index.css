@@ -275,3 +275,60 @@ body {
     opacity: 0.8;
   }
 }
+
+/* Flip container for Features <-> Leaders detail */
+@layer components {
+  .flip-container { @apply relative; height: auto; perspective: 1200px; }
+  .flip-inner { @apply relative transition-transform duration-700 ease-in-out; transform-style: preserve-3d; }
+  .flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-face { @apply absolute inset-0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .flip-front { transform: rotateY(0deg); }
+  .flip-back { transform: rotateY(180deg); }
+}
+
+/* Leaders sections (Jason/Lucia style, themed via Tailwind colors) */
+@layer components {
+  .leaders-wrapper {
+    @apply relative w-dvw overflow-x-hidden;
+  }
+  .leaders-jason {
+    @apply relative z-10 lg:ps-40 2xl:ps-80 ps-10 py-40 mt-60 flex lg:flex-row flex-col justify-between gap-5 w-dvw overflow-x-hidden;
+
+    h1 { @apply text-primary-light font-zentry uppercase text-6xl md:text-8xl mb-10 md:mb-20; }
+    h2 { @apply text-primary-blue md:text-5xl text-3xl mb-5 md:mb-7 md:pe-20 pe-10; }
+    p  { @apply text-white/90 md:text-2xl text-lg md:pe-28 pe-14; }
+
+    .jason-1 { @apply bg-primary-blue/20 lg:h-[80vh] w-auto -translate-x-5; }
+    .jason-2 { @apply bg-primary-blue/20 h-[90vh] w-auto md:mt-36 mt-20 -translate-x-5; }
+    .jason-3 { @apply bg-primary-blue/20 h-[50vh] md:w-[60%] -translate-x-5; }
+
+    .jason-1 img { @apply size-full object-cover [object-position:5%_center] transition duration-700 ease-in-out hover:scale-[0.98]; }
+    .jason-2 img { @apply size-full object-cover [object-position:80%_center] transition duration-700 ease-in-out hover:scale-x-[0.97] hover:scale-y-[0.98]; }
+    .jason-3 img { @apply size-full object-cover [object-position:42%_center] transition duration-700 ease-in-out hover:scale-[0.97]; }
+  }
+
+  .leaders-content {
+    background: radial-gradient(ellipse, rgba(10,25,47,0.9) 20%, transparent 70%);
+  }
+
+  .leaders-lucia {
+    @apply relative z-10 py-40 mt-60 flex lg:flex-row flex-col justify-between gap-5 w-dvw overflow-x-hidden;
+
+    h1 { @apply text-primary-light font-zentry uppercase text-6xl md:text-8xl mb-10 md:mb-20; }
+    h2 { @apply text-primary-blue md:text-5xl text-3xl mb-5 md:mb-7 md:pe-20 pe-10; }
+    p  { @apply text-white/90 md:text-2xl text-lg md:pe-28 pe-14; }
+    p:last-of-type { @apply md:hidden block xl:block; }
+
+    .lucia-1 { @apply bg-primary-blue/20 lg:h-[80vh] w-auto -translate-x-5; }
+    .lucia-2 { @apply bg-primary-blue/20 lg:h-[60vh] lg:w-[70%] w-[80%] md:my-36 my-20 lg:-translate-x-5 translate-x-5; }
+    .lucia-3 { @apply bg-primary-blue/20 lg:h-[90vh] md:w-[60%] -translate-x-5; }
+
+    .lucia-1 img { @apply size-full object-cover [object-position:85%_center] transition duration-700 ease-in-out hover:scale-[0.98]; }
+    .lucia-2 img { @apply size-full object-cover [object-position:50%_center] transition duration-700 ease-in-out hover:scale-x-[0.98] hover:scale-y-[0.98]; }
+    .lucia-3 img { @apply size-full object-cover [object-position:62%_center] transition duration-700 ease-in-out hover:scale-x-[0.98] hover:scale-y-[0.99]; }
+  }
+
+  .leaders-lucia-content {
+    background: radial-gradient(ellipse, rgba(10,25,47,0.9) 20%, transparent 70%);
+  }
+}
