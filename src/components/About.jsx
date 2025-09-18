@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState, useCallback, useMemo } from "react";
 
 import AnimatedTitle from "./AnimatedTitle";
 
@@ -10,16 +10,22 @@ gsap.registerPlugin(ScrollTrigger);
 const About = () => {
   const aboutSectionRef = useRef(null);
   const imageContainerRef = useRef(null);
+  const timelineRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Modern zoom-in storytelling parallax
+  // Optimized scroll progress handler
+  const updateScrollProgress = useCallback((self) => {
+    setScrollProgress(self.progress);
+  }, []);
+
+  // Optimized modern zoom-in storytelling parallax
   useGSAP(() => {
     const aboutSection = aboutSectionRef.current;
     const imageContainer = imageContainerRef.current;
 
     if (!aboutSection || !imageContainer) return;
 
-    // Main storytelling timeline dengan zoom-in effect
+    // Main storytelling timeline dengan optimized performance
     const storyTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: aboutSection,
@@ -28,19 +34,25 @@ const About = () => {
         scrub: 1.5,
         pin: true,
         pinSpacing: true,
-        onUpdate: (self) => setScrollProgress(self.progress),
+        onUpdate: updateScrollProgress,
+        invalidateOnRefresh: true,
       }
     });
 
-    // Dramatic zoom-in storytelling sequence
+    // Store timeline reference for cleanup
+    timelineRef.current = storyTimeline;
+
+    // Enhanced dramatic zoom-in storytelling sequence with smooth transitions
     storyTimeline
-      // Phase 1: Distant view - starts very small and zoomed out
+      // Phase 1: Distant view - optimized for GPU acceleration
       .fromTo(imageContainer, {
         scale: 0.1,
         y: 300,
         opacity: 0,
         borderRadius: "50%",
-        filter: "blur(20px) brightness(0.3) contrast(1.5)"
+        filter: "blur(20px) brightness(0.3) contrast(1.5)",
+        force3D: true,
+        willChange: "transform, filter"
       }, {
         scale: 0.6,
         y: 100,
@@ -50,7 +62,7 @@ const About = () => {
         duration: 0.4,
         ease: "power2.inOut"
       })
-      // Phase 2: Approaching view - getting clearer
+      // Phase 2: Approaching view - smoother transitions
       .to(imageContainer, {
         scale: 1.2,
         y: 0,
@@ -60,7 +72,7 @@ const About = () => {
         duration: 0.3,
         ease: "power1.out"
       })
-      // Phase 3: Immersive zoom - final dramatic close-up
+      // Phase 3: Immersive zoom - enhanced final reveal
       .to(imageContainer, {
         scale: 1.8,
         y: -50,
@@ -70,45 +82,72 @@ const About = () => {
         ease: "power2.out"
       });
 
-    // Parallax background depth effect
+    // Optimized parallax background depth effect
     gsap.fromTo(".about-bg-layer", {
       scale: 1.2,
-      opacity: 0.3
+      opacity: 0.3,
+      force3D: true
     }, {
       scrollTrigger: {
         trigger: aboutSection,
         start: "top bottom",
         end: "bottom top",
-        scrub: 3
+        scrub: 3,
+        invalidateOnRefresh: true
       },
       scale: 0.8,
       opacity: 0.8,
       duration: 1
     });
 
-    // Text elements storytelling reveal
+    // Enhanced text elements storytelling reveal with stagger
     gsap.fromTo(".story-text", {
       y: 100,
-      opacity: 0
+      opacity: 0,
+      force3D: true
     }, {
       scrollTrigger: {
         trigger: aboutSection,
         start: "top center",
         end: "center center",
-        scrub: 2
+        scrub: 2,
+        invalidateOnRefresh: true
       },
       y: 0,
       opacity: 1,
-      stagger: 0.1
+      stagger: 0.1,
+      ease: "power2.out"
     });
 
-  }, []);
+    // Cleanup function for proper memory management
+    return () => {
+      if (timelineRef.current) {
+        timelineRef.current.kill();
+        timelineRef.current = null;
+      }
+    };
 
-  // Dynamic effects based on scroll progress
-  const dynamicEffects = {
+  }, [updateScrollProgress]);
+
+  // Memoized dynamic effects for optimized performance
+  const dynamicEffects = useMemo(() => ({
     transform: `perspective(2000px) rotateY(${scrollProgress * 5}deg) rotateX(${scrollProgress * 3}deg)`,
     boxShadow: `0 ${20 + scrollProgress * 30}px ${40 + scrollProgress * 20}px rgba(139, 0, 0, ${0.1 + scrollProgress * 0.3})`,
-  };
+    willChange: 'transform, box-shadow'
+  }), [scrollProgress]);
+
+  // Memoized particle positions to prevent recalculation
+  const particleElements = useMemo(() =>
+    Array.from({ length: 6 }, (_, i) => ({
+      id: i,
+      width: 20 + i * 15,
+      height: 20 + i * 15,
+      left: `${10 + i * 15}%`,
+      top: `${20 + i * 10}%`,
+      translateY: scrollProgress * (50 + i * 20),
+      rotate: scrollProgress * 360
+    }))
+  , [scrollProgress]);
 
   return (
     <div
@@ -119,19 +158,19 @@ const About = () => {
       {/* Multi-layer background system */}
       <div className="about-bg-layer absolute inset-0 bg-gradient-radial from-primary-red/8 via-primary-red/4 to-transparent" />
 
-      {/* Floating particles effect */}
+      {/* Optimized floating particles effect */}
       <div className="absolute inset-0 opacity-30">
-        {[...Array(6)].map((_, i) => (
+        {particleElements.map((particle) => (
           <div
-            key={i}
-            className="absolute rounded-full bg-accent-red/20"
+            key={particle.id}
+            className="absolute rounded-full bg-accent-red/20 will-change-transform"
             style={{
-              width: `${20 + i * 15}px`,
-              height: `${20 + i * 15}px`,
-              left: `${10 + i * 15}%`,
-              top: `${20 + i * 10}%`,
-              transform: `translateY(${scrollProgress * (50 + i * 20)}px) rotate(${scrollProgress * 360}deg)`,
-              transition: 'all 0.1s ease-out'
+              width: `${particle.width}px`,
+              height: `${particle.height}px`,
+              left: particle.left,
+              top: particle.top,
+              transform: `translateY(${particle.translateY}px) rotate(${particle.rotate}deg)`,
+              transition: 'transform 0.1s ease-out'
             }}
           />
         ))}
@@ -167,24 +206,26 @@ const About = () => {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div
           ref={imageContainerRef}
-          className="relative w-[80vw] h-[80vh] max-w-6xl rounded-2xl overflow-hidden"
+          className="relative w-[80vw] h-[80vh] max-w-6xl rounded-2xl overflow-hidden will-change-transform"
           style={dynamicEffects}
         >
           <img
             src="img/about.png"
             alt="IME Roleplay - Explore the City"
-            className="size-full object-cover"
+            className="size-full object-cover will-change-transform"
+            loading="eager"
+            decoding="async"
           />
 
           {/* Progressive overlay system */}
           <div
-            className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-primary-red/20"
+            className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-primary-red/20 will-change-opacity"
             style={{ opacity: Math.max(0, 1 - scrollProgress * 1.5) }}
           />
 
           {/* Focus vignette effect */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 will-change-opacity"
             style={{
               background: `radial-gradient(circle at center, transparent ${40 + scrollProgress * 20}%, rgba(0,0,0,0.3) ${60 + scrollProgress * 20}%)`,
               opacity: scrollProgress * 0.6
@@ -193,11 +234,11 @@ const About = () => {
         </div>
       </div>
 
-      {/* Progress indicator */}
+      {/* Optimized progress indicator */}
       <div className="fixed bottom-8 right-8 z-30">
         <div className="w-16 h-16 rounded-full border-2 border-white/20 flex items-center justify-center">
           <div
-            className="w-12 h-12 rounded-full bg-accent-red transition-all duration-300"
+            className="w-12 h-12 rounded-full bg-accent-red transition-all duration-300 will-change-transform"
             style={{
               transform: `scale(${scrollProgress})`,
               opacity: scrollProgress
