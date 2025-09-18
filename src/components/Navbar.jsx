@@ -52,19 +52,18 @@ const NavBar = () => {
       className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
-        <nav className="flex size-full items-center justify-between rounded-lg border border-white/10 bg-dark-navy/90 px-4 py-3 shadow-lg backdrop-blur-md">
+        <nav className="flex size-full items-center justify-between rounded-lg border border-white/10 bg-primary-red/90 px-4 py-3 shadow-lg backdrop-blur-md">
           {/* Logo */}
           <div className="flex items-center">
             <div className="relative">
               <div className="absolute -inset-2 rounded-full bg-white/10 blur-sm"></div>
-              <img src="/img/logo.png" alt="Hope Indonesia" className="relative w-10 drop-shadow-lg" />
+              <img src="/img/logo.png" alt="IME Roleplay" className="relative w-10 drop-shadow-lg" />
             </div>
-            <span className="ml-3 hidden font-zentry text-lg font-bold text-white sm:block">Hope Indonesia</span>
           </div>
 
           {/* Mobile Brand Text - Center */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
-            <span className="font-zentry text-lg font-bold text-white">Hope Indonesia</span>
+            <span className="font-zentry text-lg font-bold text-text-primary">IME Roleplay</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -85,14 +84,14 @@ const NavBar = () => {
               id="connect-button"
               title="Connect"
               rightIcon={<TiLocationArrow />}
-              containerClass="bg-primary-blue hover:bg-primary-dark flex items-center justify-center gap-2 text-white shadow-md px-4 py-2 text-sm"
+              containerClass="bg-accent-red hover:bg-accent-hover flex items-center justify-center gap-2 text-text-primary shadow-md px-4 py-2 text-sm"
             />
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="p-2 text-white transition-colors hover:text-primary-light md:hidden"
+            className="p-2 text-text-primary transition-colors hover:text-text-accent md:hidden"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
@@ -102,13 +101,13 @@ const NavBar = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="absolute inset-x-0 top-full mt-2 md:hidden">
-            <div className="mx-4 rounded-lg border border-white/10 bg-dark-navy/95 shadow-xl backdrop-blur-md">
+            <div className="mx-4 rounded-lg border border-white/10 bg-primary-red/95 shadow-xl backdrop-blur-md">
               <div className="flex flex-col space-y-4 p-4">
                 {navItems.map((item, index) => (
                   <a
                     key={index}
                     href={`#${item.toLowerCase()}`}
-                    className="py-2 text-center text-sm font-medium text-white transition-colors hover:text-primary-light"
+                    className="py-2 text-center text-sm font-medium text-text-primary transition-colors hover:text-text-accent"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item}
@@ -119,7 +118,7 @@ const NavBar = () => {
                     id="mobile-connect-button"
                     title="Connect"
                     rightIcon={<TiLocationArrow />}
-                    containerClass="bg-primary-blue hover:bg-primary-dark flex items-center justify-center gap-2 text-white shadow-md w-full py-2 text-sm"
+                    containerClass="bg-accent-red hover:bg-accent-hover flex items-center justify-center gap-2 text-text-primary shadow-md w-full py-2 text-sm"
                   />
                 </div>
               </div>

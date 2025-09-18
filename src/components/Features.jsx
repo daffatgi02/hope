@@ -167,7 +167,7 @@ export const BentoCard = ({ src, title, description, isComingSoon, onCtaClick })
             onClick={onCtaClick}
             role="button"
             tabIndex={0}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full border-primary-light/30 bg-primary-blue/20 px-5 py-2 text-xs uppercase text-primary-light backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary-light/60"
+            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full border-primary-light/30 bg-primary-red/20 px-5 py-2 text-xs uppercase text-primary-light backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary-light/60"
           >
             <div
               className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
@@ -237,13 +237,13 @@ const Features = () => {
   }, [selected]);
 
   return (
-    <section className="bg-dark-navy pb-52 features-fade">
+    <section className="bg-background-primary pb-52 features-fade">
       <div className="container mx-auto px-3 md:px-10">
         <header className="px-5 py-32">
-          <p className="font-circular-web text-lg text-white">
-            Fitur Server Hope Indonesia
+          <p className="font-circular-web text-lg text-text-primary">
+            Fitur Server IME Roleplay
           </p>
-          <p className="max-w-md font-circular-web text-lg text-neutral-gray">
+          <p className="max-w-md font-circular-web text-lg text-text-muted">
             Rasakan pengalaman roleplay yang tak terlupakan dengan berbagai fitur
             menarik dan sistem yang mendukung interaksi realistis antar pemain.
           </p>
@@ -265,7 +265,7 @@ const Features = () => {
               <div className="flex justify-between items-center py-4 px-2">
                 <button
                   onClick={handleBack}
-                  className="border-hsla rounded-md px-4 py-2 text-white bg-primary-blue/20 hover:bg-primary-blue/30 transition"
+                  className="border-hsla rounded-md px-4 py-2 text-white bg-primary-red/20 hover:bg-primary-red/30 transition"
                   aria-label="Kembali ke daftar fitur"
                 >
                   Kembali

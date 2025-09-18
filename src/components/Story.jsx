@@ -46,16 +46,16 @@ const FloatingImage = () => {
   };
 
   return (
-    <div id="story" className="min-h-dvh w-screen bg-dark-navy text-white">
+    <div id="story" className="min-h-dvh w-screen bg-background-card text-text-primary">
       <div className="flex size-full flex-col items-center py-10 pb-24">
-        <p className="font-general text-sm uppercase text-neutral-gray md:text-[10px]">
-          Sejarah Kota Hope Indonesia
+        <p className="font-general text-sm uppercase text-text-muted md:text-[10px]">
+          Sejarah Kota IME Roleplay
         </p>
 
         <div className="relative size-full">
           <AnimatedTitle
-            title="Cer<b>i</b>ta di balik <br /> kota H<b>o</b>pe"
-            containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
+            title="Cer<b>i</b>ta di balik <br /> kota I<b>M</b>E"
+            containerClass="mt-5 pointer-events-none relative z-10 !text-text-primary"
           />
 
           <div className="story-img-container">

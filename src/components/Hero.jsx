@@ -219,11 +219,11 @@ const Hero = () => {
         >
           <img
             src="/img/logo.png"
-            alt="Hope Logo"
+            alt="IME Logo"
             className="w-28 h-28 lg:w-40 lg:h-40 xl:w-52 xl:h-52 object-contain mb-6 transition-all duration-1000 drop-shadow-2xl"
           />
           <div className="text-lg lg:text-xl xl:text-2xl font-general text-white/90 tracking-widest uppercase transition-all duration-700">
-           Hope Indonesia
+           IME Roleplay
           </div>
         </div>
       </div>
@@ -236,11 +236,11 @@ const Hero = () => {
         >
           <img
             src="/img/logo.png"
-            alt="Hope Logo"
+            alt="IME Logo"
             className="w-28 h-28 lg:w-40 lg:h-40 xl:w-52 xl:h-52 object-contain mb-6 transition-all duration-1000 drop-shadow-2xl brightness-150 contrast-125"
           />
           <div className="text-lg lg:text-xl xl:text-2xl font-general text-white tracking-widest uppercase transition-all duration-700">
-            Hope Indonesia
+            IME Roleplay
           </div>
         </div>
       </div>
@@ -254,7 +254,7 @@ const Hero = () => {
           <div className="text-center mouse-parallax-slow flex flex-col items-center">
             <img
               src="/img/logo.png"
-              alt="Hope Logo"
+              alt="IME Logo"
               className="w-20 h-20 lg:w-28 lg:h-28 xl:w-36 xl:h-36 object-contain mb-8 transition-all duration-1500 drop-shadow-2xl"
             />
             <AnimatedTitle

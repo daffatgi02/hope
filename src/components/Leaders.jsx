@@ -135,7 +135,7 @@ const SliderNavigation = ({ currentIndex, totalSlides, onPrevious, onNext, disab
       <button
         onClick={onPrevious}
         disabled={disabled}
-        className="group flex items-center justify-center w-10 h-10 rounded-full bg-primary-blue/20 border border-primary-blue/30 text-primary-light hover:bg-primary-blue/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="group flex items-center justify-center w-10 h-10 rounded-full bg-primary-red/20 border border-primary-red/30 text-primary-light hover:bg-primary-red/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         aria-label="Previous organization"
       >
         <FiChevronLeft className="w-5 h-5 group-hover:transform group-hover:-translate-x-0.5 transition-transform duration-200" />
@@ -147,8 +147,8 @@ const SliderNavigation = ({ currentIndex, totalSlides, onPrevious, onNext, disab
             key={index}
             className={`h-2 rounded-full transition-all duration-300 ${
               index === currentIndex
-                ? 'w-8 bg-primary-blue'
-                : 'w-2 bg-primary-blue/30 hover:bg-primary-blue/50'
+                ? 'w-8 bg-primary-red'
+                : 'w-2 bg-primary-red/30 hover:bg-primary-red/50'
             }`}
           />
         ))}
@@ -157,7 +157,7 @@ const SliderNavigation = ({ currentIndex, totalSlides, onPrevious, onNext, disab
       <button
         onClick={onNext}
         disabled={disabled}
-        className="group flex items-center justify-center w-10 h-10 rounded-full bg-primary-blue/20 border border-primary-blue/30 text-primary-light hover:bg-primary-blue/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="group flex items-center justify-center w-10 h-10 rounded-full bg-primary-red/20 border border-primary-red/30 text-primary-light hover:bg-primary-red/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         aria-label="Next organization"
       >
         <FiChevronRight className="w-5 h-5 group-hover:transform group-hover:translate-x-0.5 transition-transform duration-200" />

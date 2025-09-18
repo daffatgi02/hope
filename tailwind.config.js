@@ -12,36 +12,54 @@ export default {
       },
       colors: {
         primary: {
-          blue: "#0094FF",
-          light: "#4CC9F0",
-          dark: "#0070CC",
+          red: "#8B0000",      // Main brand red dari logo
+          light: "#A50000",    // Lighter red untuk hover
+          dark: "#660000",     // Darker red untuk depth
+          darker: "#4D0000",   // Darkest red untuk shadows
         },
-        dark: {
-          navy: "#0A192F",
+        secondary: {
+          red: "#DC143C",      // Crimson untuk accents
+          light: "#FF1744",    // Bright red untuk highlights
+          dark: "#B71C1C",     // Dark crimson
+        },
+        background: {
+          primary: "#8B0000",  // Main red background
+          gradient: "linear-gradient(135deg, #8B0000 0%, #660000 50%, #4D0000 100%)",
+          card: "#A50000",     // Card backgrounds
+          dark: "#330000",     // Darkest sections
+        },
+        text: {
+          primary: "#FFFFFF",  // Main white text
+          secondary: "#F5F5F5", // Slightly gray white
+          muted: "#E0E0E0",    // Muted white untuk descriptions
+          accent: "#FFE0E0",   // Light pink untuk special text
         },
         accent: {
-          blue: "#0094FF", // Menggunakan primary blue sebagai accent
-          light: "#4CC9F0", // Light blue untuk hover effects
-          bright: "#00AAFF", // Slightly brighter blue untuk highlights
+          red: "#FF4444",      // Bright red untuk buttons
+          hover: "#FF6666",    // Hover state
+          active: "#FF2222",   // Active state
         },
         neutral: {
           gray: "#9CA3AF",
+          light: "#F5F5F5",
+          dark: "#4B5563",
         },
         white: "#FFFFFF",
+        black: "#000000",
         // Legacy colors untuk kompatibilitas
         blue: {
-          50: "#4CC9F0",
-          75: "#0094FF",
+          50: "#FFE0E0",
+          75: "#FF4444",
           100: "#FFFFFF",
-          200: "#0A192F",
-          300: "#4CC9F0",
+          200: "#8B0000",
+          300: "#DC143C",
         },
         violet: {
-          300: "#0094FF", // Replace violet dengan primary blue
+          300: "#8B0000",
         },
         yellow: {
-          100: "#9CA3AF",
-          300: "#4CC9F0",
+          100: "#F5F5F5",
+          300: "#DC143C",
         },
       },
     },

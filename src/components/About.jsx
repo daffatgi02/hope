@@ -30,18 +30,18 @@ const About = () => {
     <div id="about" className="min-h-screen w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <p className="font-general text-sm uppercase text-neutral-gray md:text-[10px]">
-          Welcome to Hope Indonesia
+          Welcome to IME Roleplay
         </p>
 
         <AnimatedTitle
-          title="Jelajahi <b>k</b>ota <br /> Hope Indonesia <b>b</b>ersama"
-          containerClass="mt-5 !text-white text-center"
+          title="Jelajahi <b>k</b>ota <br /> IME Roleplay <b>b</b>ersama"
+          containerClass="mt-5 !text-text-primary text-center"
         />
 
         <div className="about-subtext">
-          <p className="text-white">Server FiveM Roleplay Indonesia Terdepan dengan Kualitas Terbaik</p>
-          <p className="text-neutral-gray">
-            Hope Indonesia menghadirkan pengalaman roleplay yang autentik dengan
+          <p className="text-text-primary">Server FiveM Roleplay Indonesia Terdepan dengan Kualitas Terbaik</p>
+          <p className="text-text-muted">
+            IME Roleplay menghadirkan pengalaman roleplay yang autentik dengan
             sistem ekonomi yang realistis dan komunitas yang solid
           </p>
         </div>

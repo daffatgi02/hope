@@ -7,7 +7,7 @@
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: #0A192F;
+  background: linear-gradient(135deg, #8B0000 0%, #660000 50%, #4D0000 100%);
   color: #FFFFFF;
   font-family: "General Sans", sans-serif;
 }
@@ -45,11 +45,11 @@ body {
   }
 
   .nav-hover-btn {
-    @apply relative ms-10 font-general text-xs uppercase text-white after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary-light after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 cursor-pointer;
+    @apply relative ms-10 font-general text-xs uppercase text-text-primary after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-accent-red after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 cursor-pointer;
   }
 
   .floating-nav {
-    @apply bg-dark-navy/90 backdrop-blur-md rounded-lg border border-primary-blue/30;
+    @apply bg-primary-red/90 backdrop-blur-md rounded-lg border border-white/30;
   }
 
   .absolute-center {
@@ -123,7 +123,7 @@ body {
   }
 
   .gallery-img-container {
-    @apply size-64 overflow-hidden bg-primary-blue;
+    @apply size-64 overflow-hidden bg-primary-red;
   }
 
   .gallery-img {
@@ -356,7 +356,7 @@ body {
     }
 
     h2 {
-      @apply text-primary-blue font-medium;
+      @apply text-primary-red font-medium;
       @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl;
       @apply mb-4 md:mb-6 lg:mb-8;
       @apply leading-snug max-w-lg;
@@ -371,26 +371,26 @@ body {
 
     .jason-1 {
       @apply col-span-1 row-span-2;
-      @apply bg-gradient-to-br from-primary-blue/30 to-primary-blue/10;
+      @apply bg-gradient-to-br from-primary-red/30 to-primary-red/10;
       @apply rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden;
-      @apply border border-primary-blue/20;
+      @apply border border-primary-red/20;
       @apply aspect-[3/4] lg:aspect-[2/3];
     }
 
     .jason-2 {
       @apply col-span-1 row-span-1;
-      @apply bg-gradient-to-br from-primary-blue/25 to-primary-blue/5;
+      @apply bg-gradient-to-br from-primary-red/25 to-primary-red/5;
       @apply rounded-lg md:rounded-xl overflow-hidden;
-      @apply border border-primary-blue/15;
+      @apply border border-primary-red/15;
       @apply aspect-square md:aspect-[4/3];
       @apply self-start mt-8 lg:mt-16;
     }
 
     .jason-3 {
       @apply col-span-1 row-span-1;
-      @apply bg-gradient-to-br from-primary-blue/20 to-primary-blue/5;
+      @apply bg-gradient-to-br from-primary-red/20 to-primary-red/5;
       @apply rounded-lg md:rounded-xl overflow-hidden;
-      @apply border border-primary-blue/10;
+      @apply border border-primary-red/10;
       @apply aspect-[4/3];
       @apply self-end;
     }
@@ -436,7 +436,7 @@ body {
     }
 
     h2 {
-      @apply text-primary-blue font-medium;
+      @apply text-primary-red font-medium;
       @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl;
       @apply mb-4 md:mb-6 lg:mb-8;
       @apply leading-snug max-w-lg;
@@ -451,27 +451,27 @@ body {
 
     .lucia-1 {
       @apply col-span-1 row-span-2;
-      @apply bg-gradient-to-bl from-primary-blue/30 to-primary-blue/10;
+      @apply bg-gradient-to-bl from-primary-red/30 to-primary-red/10;
       @apply rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden;
-      @apply border border-primary-blue/20;
+      @apply border border-primary-red/20;
       @apply aspect-[3/4] lg:aspect-[2/3];
       @apply justify-self-end;
     }
 
     .lucia-2 {
       @apply col-span-2 row-span-1;
-      @apply bg-gradient-to-bl from-primary-blue/25 to-primary-blue/5;
+      @apply bg-gradient-to-bl from-primary-red/25 to-primary-red/5;
       @apply rounded-lg md:rounded-xl overflow-hidden;
-      @apply border border-primary-blue/15;
+      @apply border border-primary-red/15;
       @apply aspect-[3/2] md:aspect-[5/2];
       @apply mt-8 lg:mt-16;
     }
 
     .lucia-3 {
       @apply col-span-1 row-span-1;
-      @apply bg-gradient-to-bl from-primary-blue/20 to-primary-blue/5;
+      @apply bg-gradient-to-bl from-primary-red/20 to-primary-red/5;
       @apply rounded-lg md:rounded-xl overflow-hidden;
-      @apply border border-primary-blue/10;
+      @apply border border-primary-red/10;
       @apply aspect-[4/3];
       @apply self-end justify-self-start;
     }
@@ -508,7 +508,7 @@ body {
 
   /* Section separators */
   .leaders-section-separator {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-primary-blue/30 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-primary-red/30 to-transparent;
     @apply my-8 md:my-12 lg:my-16;
   }
 

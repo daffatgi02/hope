@@ -10,7 +10,7 @@ const ImageClipBox = ({ src, clipClass }) => (
 const Contact = () => {
   return (
     <div id="contact" className="my-20 min-h-96 w-screen  px-10">
-      <div className="relative rounded-lg border border-primary-blue/30 bg-dark-navy/90 py-24 text-white backdrop-blur-md sm:overflow-hidden">
+      <div className="relative rounded-lg border border-white/30 bg-primary-red/90 py-24 text-text-primary backdrop-blur-md sm:overflow-hidden">
         <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
           <ImageClipBox
             src="/img/contact-1.webp"
@@ -41,7 +41,7 @@ const Contact = () => {
             className="special-font !md:text-[6.2rem] w-full font-zentry !text-5xl !font-black !leading-[.9]"
           />
 
-          <Button title="Join Discord" containerClass="mt-10 cursor-pointer bg-primary-blue hover:bg-primary-dark text-white shadow-lg hover:shadow-primary-light/30" />
+          <Button title="Join Discord" containerClass="mt-10 cursor-pointer bg-accent-red hover:bg-accent-hover text-text-primary shadow-lg hover:shadow-accent-red/30" />
         </div>
       </div>
     </div>
