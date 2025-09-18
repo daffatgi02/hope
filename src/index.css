@@ -84,6 +84,30 @@ body {
     @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
   }
 
+  /* Smooth section transitions */
+  section, .section {
+    @apply relative;
+    scroll-margin-top: 80px;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Section spacing optimization */
+  .hero-section + #about {
+    margin-top: -5vh;
+  }
+
+  #about + .features-fade {
+    margin-top: 0;
+  }
+
+  .features-fade + #story {
+    margin-top: -2rem;
+  }
+
   .animated-title {
     @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
   }

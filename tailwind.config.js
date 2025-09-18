@@ -29,6 +29,9 @@ export default {
           dark: "#330000",     // Darkest sections
           light: "rgba(139, 0, 0, 0.1)",  // Very light red untuk sections
         },
+        backgroundImage: {
+          'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        },
         text: {
           primary: "#FFFFFF",  // Main white text
           secondary: "#F5F5F5", // Slightly gray white

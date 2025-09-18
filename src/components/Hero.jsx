@@ -183,7 +183,7 @@ const Hero = () => {
   return (
     <section
       ref={heroSectionRef}
-      className="hero-section relative w-dvw h-dvh overflow-hidden bg-background-light"
+      className="hero-section relative w-dvw h-dvh overflow-hidden bg-background-light z-10"
       onMouseMove={handleMouseMove}
     >
       {loading && (

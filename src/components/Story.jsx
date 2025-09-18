@@ -46,7 +46,7 @@ const FloatingImage = () => {
   };
 
   return (
-    <div id="story" className="min-h-dvh w-screen bg-background-light text-text-primary">
+    <div id="story" className="min-h-dvh w-screen bg-background-light text-text-primary pt-16">
       <div className="flex size-full flex-col items-center py-10 pb-24">
         <p className="font-general text-sm uppercase text-text-muted md:text-[10px]">
           Sejarah Kota IME Roleplay

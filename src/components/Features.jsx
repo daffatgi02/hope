@@ -237,7 +237,7 @@ const Features = () => {
   }, [selected]);
 
   return (
-    <section className="bg-background-light pb-52 features-fade">
+    <section className="bg-background-light pt-20 pb-32 features-fade">
       <div className="container mx-auto px-3 md:px-10">
         <header className="px-5 py-32">
           <p className="font-circular-web text-lg text-text-primary">
