@@ -1,62 +1,220 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import { useMemo } from "react";
+import { useMemo, useState, useCallback, useRef } from "react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const safeImg = (src) => ({ src, onError: (e) => { e.currentTarget.src = "/img/logo.png"; } });
 
-// Configuration data for all leader sections
-const LEADERS_DATA = [
-  {
+// Top 3 organizations data for each category
+const TOP_ORGANIZATIONS_DATA = {
+  polisi: {
     id: 'polisi',
-    title: 'Polisi',
-    subtitle: 'Penjaga ketertiban dengan hirarki jelas dan tindakan tegas.',
-    description: [
-      'Satuan polisi menegakkan hukum, investigasi kriminal, dan patroli terukur. Setiap keputusan berdampak pada ekosistem roleplay dan stabilitas kota.'
-    ],
-    images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
-    altTexts: ['Polisi Gallery 1', 'Polisi', 'Polisi Gallery 2']
+    organizations: [
+      {
+        id: 1,
+        name: 'LSPD Elite Unit',
+        description: 'Unit elite Los Santos Police Department dengan spesialisasi operasi khusus dan investigasi kriminal tingkat tinggi.',
+        members: '45 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['LSPD Elite 1', 'LSPD Elite 2', 'LSPD Elite 3']
+      },
+      {
+        id: 2,
+        name: 'BCSO Tactical Force',
+        description: 'Blaine County Sheriff Office dengan fokus pada patroli wilayah dan penegakan hukum di area terpencil.',
+        members: '32 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['BCSO Tactical 1', 'BCSO Tactical 2', 'BCSO Tactical 3']
+      },
+      {
+        id: 3,
+        name: 'SAHP Highway Patrol',
+        description: 'San Andreas Highway Patrol yang bertanggung jawab atas keamanan jalan raya dan pengaturan lalu lintas.',
+        members: '28 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['SAHP Highway 1', 'SAHP Highway 2', 'SAHP Highway 3']
+      }
+    ]
   },
-  {
-    id: 'cartel',
-    title: 'Cartel',
-    subtitle: 'Organisasi terstruktur dengan strategi bisnis dan wilayah.',
-    description: [
-      'Cartel mengatur suplai dan distribusi, berkolaborasi dan berkonflik dengan faksi lain untuk memperluas pengaruhnya.',
-      'Kepemimpinan yang kuat menjaga loyalitas anggota dan memastikan operasi berjalan senyap namun efektif.'
-    ],
-    images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
-    altTexts: ['Cartel 1', 'Cartel 2', 'Cartel 3']
-  },
-  {
+  gang: {
     id: 'gang',
-    title: 'Gang',
-    subtitle: 'Kelompok jalanan dengan identitas, teritori, dan reputasi.',
-    description: [
-      'Gang bergerak lincah dan adaptif. Misi kecil, efek besar - dari tagging wilayah hingga operasi cepat yang membentuk narasi kota.'
-    ],
-    images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
-    altTexts: ['Gang Gallery 1', 'Gang', 'Gang Gallery 2']
+    organizations: [
+      {
+        id: 1,
+        name: 'Ballas Street Kings',
+        description: 'Gang jalanan paling dominan di Grove Street dengan kontrol penuh atas wilayah selatan Los Santos.',
+        members: '38 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['Ballas Kings 1', 'Ballas Kings 2', 'Ballas Kings 3']
+      },
+      {
+        id: 2,
+        name: 'Los Santos Vagos',
+        description: 'Gang veteran dengan tradisi panjang dan jaringan bisnis illegal yang solid di kawasan timur kota.',
+        members: '42 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['Vagos 1', 'Vagos 2', 'Vagos 3']
+      },
+      {
+        id: 3,
+        name: 'Families Coalition',
+        description: 'Koalisi keluarga gang yang menguasai wilayah perumahan dengan strategi bisnis yang terorganisir.',
+        members: '35 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['Families 1', 'Families 2', 'Families 3']
+      }
+    ]
   },
-  {
+  cartel: {
+    id: 'cartel',
+    organizations: [
+      {
+        id: 1,
+        name: 'Los Santos Cartel',
+        description: 'Organisasi kriminal terbesar dengan jaringan internasional dan operasi bisnis yang kompleks.',
+        members: '55 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['LS Cartel 1', 'LS Cartel 2', 'LS Cartel 3']
+      },
+      {
+        id: 2,
+        name: 'Sinaloa Syndicate',
+        description: 'Sindikat dengan fokus pada logistik dan distribusi dengan teknologi canggih dan keamanan ketat.',
+        members: '48 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['Sinaloa 1', 'Sinaloa 2', 'Sinaloa 3']
+      },
+      {
+        id: 3,
+        name: 'Tijuana Brotherhood',
+        description: 'Persaudaraan yang menguasai jalur perdagangan lintas batas dengan strategi ekspansi wilayah.',
+        members: '41 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['Tijuana 1', 'Tijuana 2', 'Tijuana 3']
+      }
+    ]
+  },
+  mafia: {
     id: 'mafia',
-    title: 'Mafia',
-    subtitle: 'Struktur keluarga, strategi rapi, operasi bersih.',
-    description: [
-      'Mafia menjaga kehormatan dan jaringan bisnis. Kekuatan dibangun lewat aliansi, intel, dan langkah yang selalu diperhitungkan.',
-      'Puncak kepemimpinan memastikan stabilitas dan kesinambungan organisasi dari generasi ke generasi.'
-    ],
-    images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
-    altTexts: ['Mafia 1', 'Mafia 2', 'Mafia 3']
+    organizations: [
+      {
+        id: 1,
+        name: 'Torretti Family',
+        description: 'Keluarga mafia tertua dengan tradisi bisnis legal dan illegal yang seimbang, menguasai industri konstruksi.',
+        members: '52 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['Torretti 1', 'Torretti 2', 'Torretti 3']
+      },
+      {
+        id: 2,
+        name: 'Lucchese Enterprises',
+        description: 'Perusahaan dengan jaringan bisnis yang luas dari restoran hingga kasino dengan operasi yang sangat terorganisir.',
+        members: '46 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['Lucchese 1', 'Lucchese 2', 'Lucchese 3']
+      },
+      {
+        id: 3,
+        name: 'Corleone Collective',
+        description: 'Kolektif yang fokus pada perdagangan seni dan barang antik dengan jaringan kolektor internasional.',
+        members: '39 Anggota',
+        images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+        altTexts: ['Corleone 1', 'Corleone 2', 'Corleone 3']
+      }
+    ]
   }
-];
+};
 
-// Reusable LeaderSection component
+// Minimalist Navigation Slider Component
+const SliderNavigation = ({ currentIndex, totalSlides, onPrevious, onNext, disabled = false }) => {
+  return (
+    <div className="flex items-center justify-between w-full mb-8">
+      <button
+        onClick={onPrevious}
+        disabled={disabled}
+        className="group flex items-center justify-center w-10 h-10 rounded-full bg-primary-blue/20 border border-primary-blue/30 text-primary-light hover:bg-primary-blue/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-label="Previous organization"
+      >
+        <FiChevronLeft className="w-5 h-5 group-hover:transform group-hover:-translate-x-0.5 transition-transform duration-200" />
+      </button>
+
+      <div className="flex items-center space-x-3">
+        {Array.from({ length: totalSlides }).map((_, index) => (
+          <div
+            key={index}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              index === currentIndex
+                ? 'w-8 bg-primary-blue'
+                : 'w-2 bg-primary-blue/30 hover:bg-primary-blue/50'
+            }`}
+          />
+        ))}
+      </div>
+
+      <button
+        onClick={onNext}
+        disabled={disabled}
+        className="group flex items-center justify-center w-10 h-10 rounded-full bg-primary-blue/20 border border-primary-blue/30 text-primary-light hover:bg-primary-blue/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-label="Next organization"
+      >
+        <FiChevronRight className="w-5 h-5 group-hover:transform group-hover:translate-x-0.5 transition-transform duration-200" />
+      </button>
+    </div>
+  );
+};
+
+// Enhanced Leader Section with Slider
 const LeaderSection = ({ data, showSeparator = true }) => {
-  const { id, title, subtitle, description, images, altTexts } = data;
+  const { id, organizations } = data;
+  const [currentOrgIndex, setCurrentOrgIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const contentRef = useRef(null);
+  const galleryRef = useRef(null);
 
+  const currentOrg = organizations[currentOrgIndex];
+
+  // Optimized navigation handlers with animation
+  const handlePrevious = useCallback(() => {
+    if (isAnimating) return;
+    setCurrentOrgIndex(prev => (prev === 0 ? organizations.length - 1 : prev - 1));
+  }, [isAnimating, organizations.length]);
+
+  const handleNext = useCallback(() => {
+    if (isAnimating) return;
+    setCurrentOrgIndex(prev => (prev === organizations.length - 1 ? 0 : prev + 1));
+  }, [isAnimating, organizations.length]);
+
+  // GSAP animations for smooth transitions
+  useGSAP(() => {
+    if (!contentRef.current || !galleryRef.current) return;
+
+    setIsAnimating(true);
+
+    const tl = gsap.timeline({
+      onComplete: () => setIsAnimating(false)
+    });
+
+    // Fade out current content
+    tl.to([contentRef.current, galleryRef.current], {
+      opacity: 0,
+      y: 20,
+      duration: 0.3,
+      ease: "power2.inOut"
+    })
+    // Fade in new content
+    .to([contentRef.current, galleryRef.current], {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      ease: "power2.out"
+    });
+
+  }, [currentOrgIndex]);
+
+  // Section-specific parallax animation
   useGSAP(() => {
     gsap.to(`.${id}-section .img-gallery`, {
       scrollTrigger: {
@@ -74,18 +232,35 @@ const LeaderSection = ({ data, showSeparator = true }) => {
   return (
     <div className="leaders-container">
       <section className={`leaders-jason ${id}-section`}>
-        <div className="leaders-content">
-          <h1>{title}</h1>
-          <h2>{subtitle}</h2>
-          {description.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+        <div className="leaders-content" ref={contentRef}>
+          <h1>{currentOrg.name}</h1>
+
+          <SliderNavigation
+            currentIndex={currentOrgIndex}
+            totalSlides={organizations.length}
+            onPrevious={handlePrevious}
+            onNext={handleNext}
+            disabled={isAnimating}
+          />
+
+          <div className="space-y-4">
+            <p className="text-white/90 text-base md:text-lg leading-relaxed mb-6">
+              {currentOrg.description}
+            </p>
+
+            <div className="text-sm">
+              <div className="flex justify-between">
+                <span className="text-neutral-gray">Anggota:</span>
+                <span className="text-primary-light font-medium">{currentOrg.members}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="img-gallery">
-          {images.map((imageSrc, index) => (
-            <div key={index} className={`jason-${index + 1}`}>
-              <img {...safeImg(imageSrc)} alt={altTexts[index]} />
+        <div className="img-gallery" ref={galleryRef}>
+          {currentOrg.images.map((imageSrc, index) => (
+            <div key={`${currentOrg.id}-${index}`} className={`jason-${index + 1}`}>
+              <img {...safeImg(imageSrc)} alt={currentOrg.altTexts[index]} />
             </div>
           ))}
         </div>
@@ -97,22 +272,22 @@ const LeaderSection = ({ data, showSeparator = true }) => {
 
 // Export individual sections for Features.jsx compatibility
 export const PolisiSection = () => {
-  const data = useMemo(() => LEADERS_DATA.find(item => item.id === 'polisi'), []);
+  const data = useMemo(() => TOP_ORGANIZATIONS_DATA.polisi, []);
   return <LeaderSection data={data} />;
 };
 
 export const CartelSection = () => {
-  const data = useMemo(() => LEADERS_DATA.find(item => item.id === 'cartel'), []);
+  const data = useMemo(() => TOP_ORGANIZATIONS_DATA.cartel, []);
   return <LeaderSection data={data} />;
 };
 
 export const GangSection = () => {
-  const data = useMemo(() => LEADERS_DATA.find(item => item.id === 'gang'), []);
+  const data = useMemo(() => TOP_ORGANIZATIONS_DATA.gang, []);
   return <LeaderSection data={data} />;
 };
 
 export const MafiaSection = () => {
-  const data = useMemo(() => LEADERS_DATA.find(item => item.id === 'mafia'), []);
+  const data = useMemo(() => TOP_ORGANIZATIONS_DATA.mafia, []);
   return <LeaderSection data={data} showSeparator={false} />;
 };
 
@@ -147,7 +322,7 @@ const Leaders = () => {
               start: 'top bottom',
               end: 'bottom top',
               scrub: 1.5,
-              invalidateOnRefresh: true // Better performance on resize
+              invalidateOnRefresh: true
             },
             y: -30,
             scale: 1,
@@ -163,7 +338,7 @@ const Leaders = () => {
     const containers = gsap.utils.toArray('.leaders-container');
 
     containers.forEach((container, index) => {
-      if (index === 0) return; // Skip first section
+      if (index === 0) return;
 
       gsap.fromTo(container,
         { opacity: 0.7 },
@@ -183,13 +358,15 @@ const Leaders = () => {
     });
   }, []);
 
+  const organizationCategories = useMemo(() => Object.values(TOP_ORGANIZATIONS_DATA), []);
+
   return (
     <section className="leaders-wrapper">
-      {LEADERS_DATA.map((leaderData, index) => (
+      {organizationCategories.map((categoryData, index) => (
         <LeaderSection
-          key={leaderData.id}
-          data={leaderData}
-          showSeparator={index < LEADERS_DATA.length - 1}
+          key={categoryData.id}
+          data={categoryData}
+          showSeparator={index < organizationCategories.length - 1}
         />
       ))}
     </section>
