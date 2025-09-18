@@ -1,174 +1,122 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
+import { useMemo } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const safeImg = (src) => ({ src, onError: (e) => { e.currentTarget.src = "/img/logo.png"; } });
 
-export const PolisiSection = () => {
+// Configuration data for all leader sections
+const LEADERS_DATA = [
+  {
+    id: 'polisi',
+    title: 'Polisi',
+    subtitle: 'Penjaga ketertiban dengan hirarki jelas dan tindakan tegas.',
+    description: [
+      'Satuan polisi menegakkan hukum, investigasi kriminal, dan patroli terukur. Setiap keputusan berdampak pada ekosistem roleplay dan stabilitas kota.'
+    ],
+    images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+    altTexts: ['Polisi Gallery 1', 'Polisi', 'Polisi Gallery 2']
+  },
+  {
+    id: 'cartel',
+    title: 'Cartel',
+    subtitle: 'Organisasi terstruktur dengan strategi bisnis dan wilayah.',
+    description: [
+      'Cartel mengatur suplai dan distribusi, berkolaborasi dan berkonflik dengan faksi lain untuk memperluas pengaruhnya.',
+      'Kepemimpinan yang kuat menjaga loyalitas anggota dan memastikan operasi berjalan senyap namun efektif.'
+    ],
+    images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+    altTexts: ['Cartel 1', 'Cartel 2', 'Cartel 3']
+  },
+  {
+    id: 'gang',
+    title: 'Gang',
+    subtitle: 'Kelompok jalanan dengan identitas, teritori, dan reputasi.',
+    description: [
+      'Gang bergerak lincah dan adaptif. Misi kecil, efek besar - dari tagging wilayah hingga operasi cepat yang membentuk narasi kota.'
+    ],
+    images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+    altTexts: ['Gang Gallery 1', 'Gang', 'Gang Gallery 2']
+  },
+  {
+    id: 'mafia',
+    title: 'Mafia',
+    subtitle: 'Struktur keluarga, strategi rapi, operasi bersih.',
+    description: [
+      'Mafia menjaga kehormatan dan jaringan bisnis. Kekuatan dibangun lewat aliansi, intel, dan langkah yang selalu diperhitungkan.',
+      'Puncak kepemimpinan memastikan stabilitas dan kesinambungan organisasi dari generasi ke generasi.'
+    ],
+    images: ['/img/gallery-5.webp', '/img/gallery-5.webp', '/img/gallery-5.webp'],
+    altTexts: ['Mafia 1', 'Mafia 2', 'Mafia 3']
+  }
+];
+
+// Reusable LeaderSection component
+const LeaderSection = ({ data, showSeparator = true }) => {
+  const { id, title, subtitle, description, images, altTexts } = data;
+
   useGSAP(() => {
-    gsap.to('.leaders-jason .img-gallery', {
+    gsap.to(`.${id}-section .img-gallery`, {
       scrollTrigger: {
-        trigger: '.leaders-jason',
+        trigger: `.${id}-section`,
         start: 'top center',
         end: '80% center',
         scrub: 2
-      }, y: -50, duration: 1, ease: 'power1.inOut'
+      },
+      y: -50,
+      duration: 1,
+      ease: 'power1.inOut'
     });
-  });
+  }, [id]);
 
   return (
     <div className="leaders-container">
-      <section className="leaders-jason">
+      <section className={`leaders-jason ${id}-section`}>
         <div className="leaders-content">
-          <h1>Polisi</h1>
-          <h2>Penjaga ketertiban dengan hirarki jelas dan tindakan tegas.</h2>
-          <p>
-            Satuan polisi menegakkan hukum, investigasi kriminal, dan patroli terukur.
-            Setiap keputusan berdampak pada ekosistem roleplay dan stabilitas kota.
-          </p>
+          <h1>{title}</h1>
+          <h2>{subtitle}</h2>
+          {description.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
         </div>
 
         <div className="img-gallery">
-          <div className="jason-1">
-            <img {...safeImg('/img/gallery-1.webp')} alt="Polisi Gallery 1" />
-          </div>
-          <div className="jason-2">
-            <img {...safeImg('/img/polisi.jpg')} alt="Polisi" />
-          </div>
-          <div className="jason-3">
-            <img {...safeImg('/img/gallery-2.webp')} alt="Polisi Gallery 2" />
-          </div>
+          {images.map((imageSrc, index) => (
+            <div key={index} className={`jason-${index + 1}`}>
+              <img {...safeImg(imageSrc)} alt={altTexts[index]} />
+            </div>
+          ))}
         </div>
       </section>
-      <div className="leaders-section-separator"></div>
+      {showSeparator && <div className="leaders-section-separator"></div>}
     </div>
   );
+};
+
+// Export individual sections for Features.jsx compatibility
+export const PolisiSection = () => {
+  const data = useMemo(() => LEADERS_DATA.find(item => item.id === 'polisi'), []);
+  return <LeaderSection data={data} />;
 };
 
 export const CartelSection = () => {
-  useGSAP(() => {
-    gsap.to('.leaders-lucia .img-gallery', {
-      scrollTrigger: {
-        trigger: '.leaders-lucia',
-        start: 'top center',
-        end: '80% center',
-        scrub: 2
-      }, y: -50, duration: 1, ease: 'power1.inOut'
-    });
-  });
-
-  return (
-    <div className="leaders-container">
-      <section className="leaders-lucia">
-        <div className="img-gallery">
-          <div className="lucia-1">
-            <img {...safeImg('/img/gallery-3.webp')} alt="Cartel 1" />
-          </div>
-          <div className="lucia-2">
-            <img {...safeImg('/img/stones.webp')} alt="Cartel 2" />
-          </div>
-          <div className="lucia-3">
-            <img {...safeImg('/img/gallery-4.webp')} alt="Cartel 3" />
-          </div>
-        </div>
-
-        <div className="leaders-lucia-content">
-          <h1>Cartel</h1>
-          <h2>Organisasi terstruktur dengan strategi bisnis dan wilayah.</h2>
-          <p>Cartel mengatur suplai dan distribusi, berkolaborasi dan berkonflik
-            dengan faksi lain untuk memperluas pengaruhnya.</p>
-          <p>Kepemimpinan yang kuat menjaga loyalitas anggota dan
-            memastikan operasi berjalan senyap namun efektif.</p>
-        </div>
-      </section>
-      <div className="leaders-section-separator"></div>
-    </div>
-  );
+  const data = useMemo(() => LEADERS_DATA.find(item => item.id === 'cartel'), []);
+  return <LeaderSection data={data} />;
 };
 
 export const GangSection = () => {
-  useGSAP(() => {
-    gsap.to('.gang-section .img-gallery', {
-      scrollTrigger: {
-        trigger: '.gang-section',
-        start: 'top center',
-        end: '80% center',
-        scrub: 2
-      }, y: -50, duration: 1, ease: 'power1.inOut'
-    });
-  });
-
-  return (
-    <div className="leaders-container">
-      <section className="leaders-jason gang-section">
-        <div className="leaders-content">
-          <h1>Gang</h1>
-          <h2>Kelompok jalanan dengan identitas, teritori, dan reputasi.</h2>
-          <p>
-            Gang bergerak lincah dan adaptif. Misi kecil, efek besar - dari
-            tagging wilayah hingga operasi cepat yang membentuk narasi kota.
-          </p>
-        </div>
-
-        <div className="img-gallery">
-          <div className="jason-1">
-            <img {...safeImg('/img/gallery-5.webp')} alt="Gang Gallery 1" />
-          </div>
-          <div className="jason-2">
-            <img {...safeImg('/img/swordman.webp')} alt="Gang" />
-          </div>
-          <div className="jason-3">
-            <img {...safeImg('/img/about.webp')} alt="Gang Gallery 2" />
-          </div>
-        </div>
-      </section>
-      <div className="leaders-section-separator"></div>
-    </div>
-  );
+  const data = useMemo(() => LEADERS_DATA.find(item => item.id === 'gang'), []);
+  return <LeaderSection data={data} />;
 };
 
 export const MafiaSection = () => {
-  useGSAP(() => {
-    gsap.to('.mafia-section .img-gallery', {
-      scrollTrigger: {
-        trigger: '.mafia-section',
-        start: 'top center',
-        end: '80% center',
-        scrub: 2
-      }, y: -50, duration: 1, ease: 'power1.inOut'
-    });
-  });
-
-  return (
-    <div className="leaders-container">
-      <section className="leaders-lucia mafia-section">
-        <div className="img-gallery">
-          <div className="lucia-1">
-            <img {...safeImg('/img/swordman-partial.webp')} alt="Mafia 1" />
-          </div>
-          <div className="lucia-2">
-            <img {...safeImg('/img/stones.webp')} alt="Mafia 2" />
-          </div>
-          <div className="lucia-3">
-            <img {...safeImg('/img/entrance.webp')} alt="Mafia 3" />
-          </div>
-        </div>
-
-        <div className="leaders-lucia-content">
-          <h1>Mafia</h1>
-          <h2>Struktur keluarga, strategi rapi, operasi bersih.</h2>
-          <p>Mafia menjaga kehormatan dan jaringan bisnis. Kekuatan dibangun
-            lewat aliansi, intel, dan langkah yang selalu diperhitungkan.</p>
-          <p>Puncak kepemimpinan memastikan stabilitas dan kesinambungan
-            organisasi dari generasi ke generasi.</p>
-        </div>
-      </section>
-    </div>
-  );
+  const data = useMemo(() => LEADERS_DATA.find(item => item.id === 'mafia'), []);
+  return <LeaderSection data={data} showSeparator={false} />;
 };
 
+// Main Leaders component with optimized GSAP animations
 const Leaders = () => {
   useGSAP(() => {
     // Fade previous features section when entering leaders
@@ -184,8 +132,10 @@ const Leaders = () => {
       }).to('.features-fade', { opacity: 0, duration: 1, ease: 'power1.inOut' });
     }
 
-    // Enhanced parallax for all gallery sections
-    gsap.utils.toArray('.img-gallery').forEach((gallery, index) => {
+    // Enhanced parallax for all gallery sections with performance optimization
+    const galleries = gsap.utils.toArray('.img-gallery');
+
+    galleries.forEach((gallery) => {
       const images = gallery.querySelectorAll('img');
 
       images.forEach((img, imgIndex) => {
@@ -196,7 +146,8 @@ const Leaders = () => {
               trigger: gallery,
               start: 'top bottom',
               end: 'bottom top',
-              scrub: 1.5
+              scrub: 1.5,
+              invalidateOnRefresh: true // Better performance on resize
             },
             y: -30,
             scale: 1,
@@ -208,8 +159,10 @@ const Leaders = () => {
       });
     });
 
-    // Subtle cross-fade transitions between sections
-    gsap.utils.toArray('.leaders-container').forEach((container, index) => {
+    // Optimized cross-fade transitions between sections
+    const containers = gsap.utils.toArray('.leaders-container');
+
+    containers.forEach((container, index) => {
       if (index === 0) return; // Skip first section
 
       gsap.fromTo(container,
@@ -219,7 +172,8 @@ const Leaders = () => {
             trigger: container,
             start: 'top 80%',
             end: 'top 20%',
-            scrub: 1
+            scrub: 1,
+            invalidateOnRefresh: true
           },
           opacity: 1,
           duration: 1,
@@ -227,16 +181,19 @@ const Leaders = () => {
         }
       );
     });
-  });
+  }, []);
 
   return (
     <section className="leaders-wrapper">
-      <PolisiSection />
-      <CartelSection />
-      <GangSection />
-      <MafiaSection />
+      {LEADERS_DATA.map((leaderData, index) => (
+        <LeaderSection
+          key={leaderData.id}
+          data={leaderData}
+          showSeparator={index < LEADERS_DATA.length - 1}
+        />
+      ))}
     </section>
   );
-}
+};
 
 export default Leaders;
