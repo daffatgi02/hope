@@ -8,178 +8,175 @@ const safeImg = (src) => ({ src, onError: (e) => { e.currentTarget.src = "/img/l
 
 export const PolisiSection = () => {
   useGSAP(() => {
-    gsap.to('.leaders-jason .img-box', {
+    gsap.to('.leaders-jason .img-gallery', {
       scrollTrigger: {
         trigger: '.leaders-jason',
         start: 'top center',
         end: '80% center',
         scrub: 2
-      }, y: -300, duration: 1, ease: 'power1.inOut'
+      }, y: -50, duration: 1, ease: 'power1.inOut'
     });
   });
 
   return (
-    <section className="leaders-jason">
-      <div className="max-w-lg leaders-content">
-        <h1>Polisi</h1>
-        <h2>Penjaga ketertiban dengan hirarki jelas dan tindakan tegas.</h2>
-        <p>
-          Satuan polisi menegakkan hukum, investigasi kriminal, dan patroli terukur.
-          Setiap keputusan berdampak pada ekosistem roleplay dan stabilitas kota.
-        </p>
+    <div className="leaders-container">
+      <section className="leaders-jason">
+        <div className="leaders-content">
+          <h1>Polisi</h1>
+          <h2>Penjaga ketertiban dengan hirarki jelas dan tindakan tegas.</h2>
+          <p>
+            Satuan polisi menegakkan hukum, investigasi kriminal, dan patroli terukur.
+            Setiap keputusan berdampak pada ekosistem roleplay dan stabilitas kota.
+          </p>
+        </div>
 
-        <div className="jason-2">
-          <img {...safeImg('/img/polisi.jpg')} alt="Polisi" />
+        <div className="img-gallery">
+          <div className="jason-1">
+            <img {...safeImg('/img/gallery-1.webp')} alt="Polisi Gallery 1" />
+          </div>
+          <div className="jason-2">
+            <img {...safeImg('/img/polisi.jpg')} alt="Polisi" />
+          </div>
+          <div className="jason-3">
+            <img {...safeImg('/img/gallery-2.webp')} alt="Polisi Gallery 2" />
+          </div>
         </div>
-      </div>
-
-      <div className="space-y-5 mt-96 img-box">
-        <div className="jason-1">
-          <img {...safeImg('/img/gallery-1.webp')} alt="Polisi Gallery 1" />
-        </div>
-        <div className="jason-3">
-          <img {...safeImg('/img/gallery-2.webp')} alt="Polisi Gallery 2" />
-        </div>
-      </div>
-    </section>
+      </section>
+      <div className="leaders-section-separator"></div>
+    </div>
   );
 };
 
 export const CartelSection = () => {
   useGSAP(() => {
-    gsap.to('.leaders-lucia .img-box', {
+    gsap.to('.leaders-lucia .img-gallery', {
       scrollTrigger: {
         trigger: '.leaders-lucia',
         start: 'top center',
         end: '80% center',
         scrub: 2
-      }, y: -200, duration: 1, ease: 'power1.inOut'
+      }, y: -50, duration: 1, ease: 'power1.inOut'
     });
   });
 
   return (
-    <section className="leaders-lucia">
-      <div className="flex flex-col gap-5 items-end img-box lg:1/2 ps-10 mt-96">
-        <div className="lucia-1">
-          <img {...safeImg('/img/gallery-3.webp')} alt="Cartel 1" />
+    <div className="leaders-container">
+      <section className="leaders-lucia">
+        <div className="img-gallery">
+          <div className="lucia-1">
+            <img {...safeImg('/img/gallery-3.webp')} alt="Cartel 1" />
+          </div>
+          <div className="lucia-2">
+            <img {...safeImg('/img/stones.webp')} alt="Cartel 2" />
+          </div>
+          <div className="lucia-3">
+            <img {...safeImg('/img/gallery-4.webp')} alt="Cartel 3" />
+          </div>
         </div>
-        <div className="lucia-3">
-          <img {...safeImg('/img/gallery-4.webp')} alt="Cartel 3" />
-        </div>
-      </div>
 
-      <div className="lg:w-1/2 leaders-lucia-content">
-        <div className="max-w-xl lg:ps-32 ps-10">
+        <div className="leaders-lucia-content">
           <h1>Cartel</h1>
           <h2>Organisasi terstruktur dengan strategi bisnis dan wilayah.</h2>
           <p>Cartel mengatur suplai dan distribusi, berkolaborasi dan berkonflik
             dengan faksi lain untuk memperluas pengaruhnya.</p>
+          <p>Kepemimpinan yang kuat menjaga loyalitas anggota dan
+            memastikan operasi berjalan senyap namun efektif.</p>
         </div>
-
-        <div className="lucia-2">
-          <img {...safeImg('/img/stones.webp')} alt="Cartel 2" />
-        </div>
-
-        <p className="max-w-xl lg:ps-32 ps-10">Kepemimpinan yang kuat menjaga loyalitas anggota dan
-          memastikan operasi berjalan senyap namun efektif.</p>
-      </div>
-    </section>
+      </section>
+      <div className="leaders-section-separator"></div>
+    </div>
   );
 };
 
 export const GangSection = () => {
   useGSAP(() => {
-    gsap.to('.leaders-jason .img-box', {
+    gsap.to('.gang-section .img-gallery', {
       scrollTrigger: {
-        trigger: '.leaders-jason',
+        trigger: '.gang-section',
         start: 'top center',
         end: '80% center',
         scrub: 2
-      }, y: -300, duration: 1, ease: 'power1.inOut'
+      }, y: -50, duration: 1, ease: 'power1.inOut'
     });
   });
 
   return (
-    <section className="leaders-jason">
-      <div className="max-w-lg leaders-content">
-        <h1>Gang</h1>
-        <h2>Kelompok jalanan dengan identitas, teritori, dan reputasi.</h2>
-        <p>
-          Gang bergerak lincah dan adaptif. Misi kecil, efek besar - dari
-          tagging wilayah hingga operasi cepat yang membentuk narasi kota.
-        </p>
+    <div className="leaders-container">
+      <section className="leaders-jason gang-section">
+        <div className="leaders-content">
+          <h1>Gang</h1>
+          <h2>Kelompok jalanan dengan identitas, teritori, dan reputasi.</h2>
+          <p>
+            Gang bergerak lincah dan adaptif. Misi kecil, efek besar - dari
+            tagging wilayah hingga operasi cepat yang membentuk narasi kota.
+          </p>
+        </div>
 
-        <div className="jason-2">
-          <img {...safeImg('/img/swordman.webp')} alt="Gang" />
+        <div className="img-gallery">
+          <div className="jason-1">
+            <img {...safeImg('/img/gallery-5.webp')} alt="Gang Gallery 1" />
+          </div>
+          <div className="jason-2">
+            <img {...safeImg('/img/swordman.webp')} alt="Gang" />
+          </div>
+          <div className="jason-3">
+            <img {...safeImg('/img/about.webp')} alt="Gang Gallery 2" />
+          </div>
         </div>
-      </div>
-
-      <div className="space-y-5 mt-96 img-box">
-        <div className="jason-1">
-          <img {...safeImg('/img/gallery-5.webp')} alt="Gang Gallery 1" />
-        </div>
-        <div className="jason-3">
-          <img {...safeImg('/img/about.webp')} alt="Gang Gallery 2" />
-        </div>
-      </div>
-    </section>
+      </section>
+      <div className="leaders-section-separator"></div>
+    </div>
   );
 };
 
 export const MafiaSection = () => {
   useGSAP(() => {
-    gsap.to('.leaders-lucia .img-box', {
+    gsap.to('.mafia-section .img-gallery', {
       scrollTrigger: {
-        trigger: '.leaders-lucia',
+        trigger: '.mafia-section',
         start: 'top center',
         end: '80% center',
         scrub: 2
-      }, y: -200, duration: 1, ease: 'power1.inOut'
+      }, y: -50, duration: 1, ease: 'power1.inOut'
     });
   });
 
   return (
-    <section className="leaders-lucia">
-      <div className="flex flex-col gap-5 items-end img-box lg:1/2 ps-10 mt-96">
-        <div className="lucia-1">
-          <img {...safeImg('/img/swordman-partial.webp')} alt="Mafia 1" />
+    <div className="leaders-container">
+      <section className="leaders-lucia mafia-section">
+        <div className="img-gallery">
+          <div className="lucia-1">
+            <img {...safeImg('/img/swordman-partial.webp')} alt="Mafia 1" />
+          </div>
+          <div className="lucia-2">
+            <img {...safeImg('/img/stones.webp')} alt="Mafia 2" />
+          </div>
+          <div className="lucia-3">
+            <img {...safeImg('/img/entrance.webp')} alt="Mafia 3" />
+          </div>
         </div>
-        <div className="lucia-3">
-          <img {...safeImg('/img/entrance.webp')} alt="Mafia 3" />
-        </div>
-      </div>
 
-      <div className="lg:w-1/2 leaders-lucia-content">
-        <div className="max-w-xl lg:ps-32 ps-10">
+        <div className="leaders-lucia-content">
           <h1>Mafia</h1>
           <h2>Struktur keluarga, strategi rapi, operasi bersih.</h2>
           <p>Mafia menjaga kehormatan dan jaringan bisnis. Kekuatan dibangun
             lewat aliansi, intel, dan langkah yang selalu diperhitungkan.</p>
+          <p>Puncak kepemimpinan memastikan stabilitas dan kesinambungan
+            organisasi dari generasi ke generasi.</p>
         </div>
-
-        <div className="lucia-2">
-          <img {...safeImg('/img/stones.webp')} alt="Mafia 2" />
-        </div>
-
-        <p className="max-w-xl lg:ps-32 ps-10">Puncak kepemimpinan memastikan stabilitas dan kesinambungan
-          organisasi dari generasi ke generasi.</p>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
 const Leaders = () => {
   useGSAP(() => {
-    // Overlap for smooth transition from previous section
-    gsap.utils.toArray('.leaders-jason').forEach((el) => gsap.set(el, { marginTop: '-80vh' }));
-    gsap.utils.toArray('.leaders-lucia').forEach((el) => gsap.set(el, { marginTop: '-80vh' }));
-
-    // Fade previous features section when entering first leaders block
-    const firstJason = document.querySelector('.leaders-jason');
-    if (firstJason) {
+    // Fade previous features section when entering leaders
+    const leadersWrapper = document.querySelector('.leaders-wrapper');
+    if (leadersWrapper) {
       gsap.timeline({
         scrollTrigger: {
-          trigger: firstJason,
+          trigger: leadersWrapper,
           start: 'top 90%',
           end: '10% center',
           scrub: 2,
@@ -187,156 +184,57 @@ const Leaders = () => {
       }).to('.features-fade', { opacity: 0, duration: 1, ease: 'power1.inOut' });
     }
 
-    // Parallax images in each Jason-like block
-    gsap.utils.toArray('.leaders-jason').forEach((section) => {
-      const box = section.querySelector('.img-box');
-      if (!box) return;
-      gsap.to(box, {
-        scrollTrigger: {
-          trigger: section,
-          start: 'top center',
-          end: '80% center',
-          scrub: 2
-        }, y: -300, duration: 1, ease: 'power1.inOut'
+    // Enhanced parallax for all gallery sections
+    gsap.utils.toArray('.img-gallery').forEach((gallery, index) => {
+      const images = gallery.querySelectorAll('img');
+
+      images.forEach((img, imgIndex) => {
+        gsap.fromTo(img,
+          { y: 50, scale: 0.95 },
+          {
+            scrollTrigger: {
+              trigger: gallery,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1.5
+            },
+            y: -30,
+            scale: 1,
+            duration: 1,
+            ease: 'power2.out',
+            delay: imgIndex * 0.1
+          }
+        );
       });
     });
 
-    // Cross-fade from each Jason to its following Lucia (subtle)
-    gsap.utils.toArray('.leaders-lucia').forEach((section) => {
-      const prev = section.previousElementSibling;
-      if (!prev) return;
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 80%',
-          end: '10% center',
-          scrub: 2,
+    // Subtle cross-fade transitions between sections
+    gsap.utils.toArray('.leaders-container').forEach((container, index) => {
+      if (index === 0) return; // Skip first section
+
+      gsap.fromTo(container,
+        { opacity: 0.7 },
+        {
+          scrollTrigger: {
+            trigger: container,
+            start: 'top 80%',
+            end: 'top 20%',
+            scrub: 1
+          },
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.inOut'
         }
-      }).to(prev, { opacity: 0.4, duration: 1, ease: 'power1.inOut' });
-    });
-
-    // Parallax images in each Lucia-like block
-    gsap.utils.toArray('.leaders-lucia').forEach((section) => {
-      const box = section.querySelector('.img-box');
-      if (!box) return;
-      gsap.to(box, {
-        scrollTrigger: {
-          trigger: section,
-          start: 'top center',
-          end: '80% center',
-          scrub: 2
-        }, y: -200, duration: 1, ease: 'power1.inOut'
-      });
+      );
     });
   });
 
   return (
-    <section className="leaders-wrapper bg-dark-navy">
-      {/* Jason-like: Polisi */}
-      <section className="leaders-jason">
-        <div className="max-w-lg leaders-content">
-          <h1>Polisi</h1>
-          <h2>Penjaga ketertiban dengan hirarki jelas dan tindakan tegas.</h2>
-          <p>
-            Satuan polisi menegakkan hukum, investigasi kriminal, dan patroli terukur.
-            Setiap keputusan berdampak pada ekosistem roleplay dan stabilitas kota.
-          </p>
-
-          <div className="jason-2">
-            <img {...safeImg('/img/polisi.jpg')} alt="Polisi" />
-          </div>
-        </div>
-
-        <div className="space-y-5 mt-96 img-box">
-          <div className="jason-1">
-            <img {...safeImg('/img/gallery-1.webp')} alt="Polisi Gallery 1" />
-          </div>
-          <div className="jason-3">
-            <img {...safeImg('/img/gallery-2.webp')} alt="Polisi Gallery 2" />
-          </div>
-        </div>
-      </section>
-
-      {/* Lucia-like: Cartel */}
-      <section className="leaders-lucia">
-        <div className="flex flex-col gap-5 items-end img-box lg:1/2 ps-10 mt-96">
-          <div className="lucia-1">
-            <img {...safeImg('/img/gallery-3.webp')} alt="Cartel 1" />
-          </div>
-          <div className="lucia-3">
-            <img {...safeImg('/img/gallery-4.webp')} alt="Cartel 3" />
-          </div>
-        </div>
-
-        <div className="lg:w-1/2 leaders-lucia-content">
-          <div className="max-w-xl lg:ps-32 ps-10">
-            <h1>Cartel</h1>
-            <h2>Organisasi terstruktur dengan strategi bisnis dan wilayah.</h2>
-            <p>Cartel mengatur suplai dan distribusi, berkolaborasi dan berkonflik
-              dengan faksi lain untuk memperluas pengaruhnya.</p>
-          </div>
-
-          <div className="lucia-2">
-            <img {...safeImg('/img/stones.webp')} alt="Cartel 2" />
-          </div>
-
-          <p className="max-w-xl lg:ps-32 ps-10">Kepemimpinan yang kuat menjaga loyalitas anggota dan
-            memastikan operasi berjalan senyap namun efektif.</p>
-        </div>
-      </section>
-
-      {/* Jason-like: Gang */}
-      <section className="leaders-jason">
-        <div className="max-w-lg leaders-content">
-          <h1>Gang</h1>
-          <h2>Kelompok jalanan dengan identitas, teritori, dan reputasi.</h2>
-          <p>
-            Gang bergerak lincah dan adaptif. Misi kecil, efek besar - dari
-            tagging wilayah hingga operasi cepat yang membentuk narasi kota.
-          </p>
-
-          <div className="jason-2">
-            <img {...safeImg('/img/swordman.webp')} alt="Gang" />
-          </div>
-        </div>
-
-        <div className="space-y-5 mt-96 img-box">
-          <div className="jason-1">
-            <img {...safeImg('/img/gallery-5.webp')} alt="Gang Gallery 1" />
-          </div>
-          <div className="jason-3">
-            <img {...safeImg('/img/about.webp')} alt="Gang Gallery 2" />
-          </div>
-        </div>
-      </section>
-
-      {/* Lucia-like: Mafia */}
-      <section className="leaders-lucia">
-        <div className="flex flex-col gap-5 items-end img-box lg:1/2 ps-10 mt-96">
-          <div className="lucia-1">
-            <img {...safeImg('/img/swordman-partial.webp')} alt="Mafia 1" />
-          </div>
-          <div className="lucia-3">
-            <img {...safeImg('/img/entrance.webp')} alt="Mafia 3" />
-          </div>
-        </div>
-
-        <div className="lg:w-1/2 leaders-lucia-content">
-          <div className="max-w-xl lg:ps-32 ps-10">
-            <h1>Mafia</h1>
-            <h2>Struktur keluarga, strategi rapi, operasi bersih.</h2>
-            <p>Mafia menjaga kehormatan dan jaringan bisnis. Kekuatan dibangun
-              lewat aliansi, intel, dan langkah yang selalu diperhitungkan.</p>
-          </div>
-
-          <div className="lucia-2">
-            <img {...safeImg('/img/stones.webp')} alt="Mafia 2" />
-          </div>
-
-          <p className="max-w-xl lg:ps-32 ps-10">Puncak kepemimpinan memastikan stabilitas dan kesinambungan
-            organisasi dari generasi ke generasi.</p>
-        </div>
-      </section>
+    <section className="leaders-wrapper">
+      <PolisiSection />
+      <CartelSection />
+      <GangSection />
+      <MafiaSection />
     </section>
   );
 }

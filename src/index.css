@@ -278,57 +278,242 @@ body {
 
 /* Flip container for Features <-> Leaders detail */
 @layer components {
-  .flip-container { @apply relative; height: auto; perspective: 1200px; }
-  .flip-inner { @apply relative transition-transform duration-700 ease-in-out; transform-style: preserve-3d; }
-  .flipped .flip-inner { transform: rotateY(180deg); }
-  .flip-face { @apply absolute inset-0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-  .flip-front { transform: rotateY(0deg); }
-  .flip-back { transform: rotateY(180deg); }
+  .flip-container {
+    @apply relative;
+    height: auto;
+    perspective: 1200px;
+    padding-bottom: 10vh; /* Add spacing buffer for Story section */
+  }
+
+  .flip-inner {
+    @apply relative transition-transform duration-700 ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  .flipped .flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-face {
+    @apply absolute inset-0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .flip-front {
+    transform: rotateY(0deg);
+  }
+
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+
+  /* Add extra spacing when flipped to prevent overlap with Story */
+  .flipped {
+    padding-bottom: 20vh;
+  }
 }
 
-/* Leaders sections (Jason/Lucia style, themed via Tailwind colors) */
+/* Enhanced Leaders sections with professional grid positioning */
 @layer components {
   .leaders-wrapper {
-    @apply relative w-dvw overflow-x-hidden;
+    @apply relative w-full min-h-screen;
+    background: linear-gradient(180deg, #0A192F 0%, rgba(10,25,47,0.95) 100%);
   }
+
+  /* Container system matching site-wide standards */
+  .leaders-container {
+    @apply mx-auto px-5 md:px-10 lg:px-20 xl:px-24 2xl:px-32;
+    max-width: 1600px;
+  }
+
+  /* Jason-style sections (left-aligned content) */
   .leaders-jason {
-    @apply relative z-10 lg:ps-40 2xl:ps-80 ps-10 py-40 mt-60 flex lg:flex-row flex-col justify-between gap-5 w-dvw overflow-x-hidden;
+    @apply relative z-10 py-12 md:py-20 lg:py-24;
+    @apply grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16;
+    @apply w-full overflow-hidden;
+    margin-top: 0; /* Remove negative margins that cause overlap */
+    margin-bottom: 2rem;
 
-    h1 { @apply text-primary-light font-zentry uppercase text-6xl md:text-8xl mb-10 md:mb-20; }
-    h2 { @apply text-primary-blue md:text-5xl text-3xl mb-5 md:mb-7 md:pe-20 pe-10; }
-    p  { @apply text-white/90 md:text-2xl text-lg md:pe-28 pe-14; }
+    .leaders-content {
+      @apply lg:col-span-5 xl:col-span-4;
+      @apply flex flex-col justify-center;
+      @apply px-4 md:px-0;
+      background: radial-gradient(ellipse at left, rgba(10,25,47,0.9) 20%, transparent 70%);
+    }
 
-    .jason-1 { @apply bg-primary-blue/20 lg:h-[80vh] w-auto -translate-x-5; }
-    .jason-2 { @apply bg-primary-blue/20 h-[90vh] w-auto md:mt-36 mt-20 -translate-x-5; }
-    .jason-3 { @apply bg-primary-blue/20 h-[50vh] md:w-[60%] -translate-x-5; }
+    .img-gallery {
+      @apply lg:col-span-7 xl:col-span-8;
+      @apply grid grid-cols-2 gap-4 md:gap-6;
+      @apply mt-12 lg:mt-0;
+    }
 
-    .jason-1 img { @apply size-full object-cover [object-position:5%_center] transition duration-700 ease-in-out hover:scale-[0.98]; }
-    .jason-2 img { @apply size-full object-cover [object-position:80%_center] transition duration-700 ease-in-out hover:scale-x-[0.97] hover:scale-y-[0.98]; }
-    .jason-3 img { @apply size-full object-cover [object-position:42%_center] transition duration-700 ease-in-out hover:scale-[0.97]; }
+    h1 {
+      @apply text-primary-light font-zentry uppercase;
+      @apply text-4xl md:text-6xl lg:text-7xl xl:text-8xl;
+      @apply mb-6 md:mb-8 lg:mb-12;
+      @apply leading-tight tracking-tight;
+    }
+
+    h2 {
+      @apply text-primary-blue font-medium;
+      @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+      @apply mb-4 md:mb-6 lg:mb-8;
+      @apply leading-snug max-w-lg;
+    }
+
+    p {
+      @apply text-white/90 font-light;
+      @apply text-base md:text-lg lg:text-xl;
+      @apply leading-relaxed max-w-md;
+      @apply mb-8 md:mb-12;
+    }
+
+    .jason-1 {
+      @apply col-span-1 row-span-2;
+      @apply bg-gradient-to-br from-primary-blue/30 to-primary-blue/10;
+      @apply rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden;
+      @apply border border-primary-blue/20;
+      @apply aspect-[3/4] lg:aspect-[2/3];
+    }
+
+    .jason-2 {
+      @apply col-span-1 row-span-1;
+      @apply bg-gradient-to-br from-primary-blue/25 to-primary-blue/5;
+      @apply rounded-lg md:rounded-xl overflow-hidden;
+      @apply border border-primary-blue/15;
+      @apply aspect-square md:aspect-[4/3];
+      @apply self-start mt-8 lg:mt-16;
+    }
+
+    .jason-3 {
+      @apply col-span-1 row-span-1;
+      @apply bg-gradient-to-br from-primary-blue/20 to-primary-blue/5;
+      @apply rounded-lg md:rounded-xl overflow-hidden;
+      @apply border border-primary-blue/10;
+      @apply aspect-[4/3];
+      @apply self-end;
+    }
+
+    .jason-1 img, .jason-2 img, .jason-3 img {
+      @apply size-full object-cover;
+      @apply transition-all duration-500 ease-out;
+      @apply hover:scale-105 hover:brightness-110;
+    }
+
+    .jason-1 img { @apply object-[5%_center]; }
+    .jason-2 img { @apply object-[80%_center]; }
+    .jason-3 img { @apply object-[42%_center]; }
   }
 
-  .leaders-content {
-    background: radial-gradient(ellipse, rgba(10,25,47,0.9) 20%, transparent 70%);
-  }
-
+  /* Lucia-style sections (right-aligned content) */
   .leaders-lucia {
-    @apply relative z-10 py-40 mt-60 flex lg:flex-row flex-col justify-between gap-5 w-dvw overflow-x-hidden;
+    @apply relative z-10 py-12 md:py-20 lg:py-24;
+    @apply grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16;
+    @apply w-full overflow-hidden;
+    margin-top: 0; /* Remove negative margins that cause overlap */
+    margin-bottom: 2rem;
 
-    h1 { @apply text-primary-light font-zentry uppercase text-6xl md:text-8xl mb-10 md:mb-20; }
-    h2 { @apply text-primary-blue md:text-5xl text-3xl mb-5 md:mb-7 md:pe-20 pe-10; }
-    p  { @apply text-white/90 md:text-2xl text-lg md:pe-28 pe-14; }
-    p:last-of-type { @apply md:hidden block xl:block; }
+    .img-gallery {
+      @apply lg:col-span-7 xl:col-span-8;
+      @apply grid grid-cols-2 gap-4 md:gap-6;
+      @apply order-first lg:order-none;
+    }
 
-    .lucia-1 { @apply bg-primary-blue/20 lg:h-[80vh] w-auto -translate-x-5; }
-    .lucia-2 { @apply bg-primary-blue/20 lg:h-[60vh] lg:w-[70%] w-[80%] md:my-36 my-20 lg:-translate-x-5 translate-x-5; }
-    .lucia-3 { @apply bg-primary-blue/20 lg:h-[90vh] md:w-[60%] -translate-x-5; }
+    .leaders-lucia-content {
+      @apply lg:col-span-5 xl:col-span-4;
+      @apply flex flex-col justify-center;
+      @apply px-4 md:px-0 lg:pl-8 xl:pl-12;
+      @apply mt-12 lg:mt-0;
+      background: radial-gradient(ellipse at right, rgba(10,25,47,0.9) 20%, transparent 70%);
+    }
 
-    .lucia-1 img { @apply size-full object-cover [object-position:85%_center] transition duration-700 ease-in-out hover:scale-[0.98]; }
-    .lucia-2 img { @apply size-full object-cover [object-position:50%_center] transition duration-700 ease-in-out hover:scale-x-[0.98] hover:scale-y-[0.98]; }
-    .lucia-3 img { @apply size-full object-cover [object-position:62%_center] transition duration-700 ease-in-out hover:scale-x-[0.98] hover:scale-y-[0.99]; }
+    h1 {
+      @apply text-primary-light font-zentry uppercase;
+      @apply text-4xl md:text-6xl lg:text-7xl xl:text-8xl;
+      @apply mb-6 md:mb-8 lg:mb-12;
+      @apply leading-tight tracking-tight;
+    }
+
+    h2 {
+      @apply text-primary-blue font-medium;
+      @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+      @apply mb-4 md:mb-6 lg:mb-8;
+      @apply leading-snug max-w-lg;
+    }
+
+    p {
+      @apply text-white/90 font-light;
+      @apply text-base md:text-lg lg:text-xl;
+      @apply leading-relaxed max-w-md;
+      @apply mb-6 md:mb-8;
+    }
+
+    .lucia-1 {
+      @apply col-span-1 row-span-2;
+      @apply bg-gradient-to-bl from-primary-blue/30 to-primary-blue/10;
+      @apply rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden;
+      @apply border border-primary-blue/20;
+      @apply aspect-[3/4] lg:aspect-[2/3];
+      @apply justify-self-end;
+    }
+
+    .lucia-2 {
+      @apply col-span-2 row-span-1;
+      @apply bg-gradient-to-bl from-primary-blue/25 to-primary-blue/5;
+      @apply rounded-lg md:rounded-xl overflow-hidden;
+      @apply border border-primary-blue/15;
+      @apply aspect-[3/2] md:aspect-[5/2];
+      @apply mt-8 lg:mt-16;
+    }
+
+    .lucia-3 {
+      @apply col-span-1 row-span-1;
+      @apply bg-gradient-to-bl from-primary-blue/20 to-primary-blue/5;
+      @apply rounded-lg md:rounded-xl overflow-hidden;
+      @apply border border-primary-blue/10;
+      @apply aspect-[4/3];
+      @apply self-end justify-self-start;
+    }
+
+    .lucia-1 img, .lucia-2 img, .lucia-3 img {
+      @apply size-full object-cover;
+      @apply transition-all duration-500 ease-out;
+      @apply hover:scale-105 hover:brightness-110;
+    }
+
+    .lucia-1 img { @apply object-[85%_center]; }
+    .lucia-2 img { @apply object-[50%_center]; }
+    .lucia-3 img { @apply object-[62%_center]; }
   }
 
-  .leaders-lucia-content {
-    background: radial-gradient(ellipse, rgba(10,25,47,0.9) 20%, transparent 70%);
+  /* Responsive adjustments for mobile */
+  @media (max-width: 1023px) {
+    .leaders-jason .img-gallery,
+    .leaders-lucia .img-gallery {
+      @apply grid-cols-1 gap-6;
+    }
+
+    .leaders-jason .jason-1,
+    .leaders-jason .jason-2,
+    .leaders-jason .jason-3,
+    .leaders-lucia .lucia-1,
+    .leaders-lucia .lucia-2,
+    .leaders-lucia .lucia-3 {
+      @apply col-span-1 row-span-1;
+      @apply aspect-[4/3];
+      @apply mt-0 self-auto justify-self-auto;
+    }
+  }
+
+  /* Section separators */
+  .leaders-section-separator {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-primary-blue/30 to-transparent;
+    @apply my-8 md:my-12 lg:my-16;
+  }
+
+  /* Smooth height transitions for flip container */
+  .flip-container {
+    transition: height 0.7s ease-in-out, padding-bottom 0.7s ease-in-out;
   }
 }

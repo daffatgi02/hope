@@ -117,10 +117,13 @@ const Features = () => {
     const front = frontRef.current;
     const back = backRef.current;
     if (!el) return;
+
     if (!selected && front) {
       el.style.height = front.scrollHeight + 'px';
     } else if (selected && back) {
-      el.style.height = back.scrollHeight + 'px';
+      // Add extra height buffer for Leaders content
+      const extraBuffer = 100;
+      el.style.height = (back.scrollHeight + extraBuffer) + 'px';
     }
   }, [selected]);
 
