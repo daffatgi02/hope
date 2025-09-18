@@ -29,11 +29,9 @@ const About = () => {
     const storyTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: aboutSection,
-        start: "top center",
-        end: "bottom center",
-        scrub: 1.5,
-        pin: true,
-        pinSpacing: true,
+        start: "top 80%",
+        end: "bottom 20%",
+        scrub: 1.2,
         onUpdate: updateScrollProgress,
         invalidateOnRefresh: true,
       }
@@ -108,9 +106,9 @@ const About = () => {
     }, {
       scrollTrigger: {
         trigger: aboutSection,
-        start: "top center",
-        end: "center center",
-        scrub: 2,
+        start: "top 85%",
+        end: "top 50%",
+        scrub: 1,
         invalidateOnRefresh: true
       },
       y: 0,

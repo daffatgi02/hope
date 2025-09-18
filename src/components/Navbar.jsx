@@ -21,18 +21,20 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    if (currentScrollY < window.innerHeight * 0.8) {
-      // In hero section: hide navbar completely
-      setIsNavVisible(false);
-      navContainerRef.current.classList.remove("floating-nav");
-    } else if (currentScrollY > lastScrollY) {
-      // Scrolling down after hero: hide navbar and apply floating-nav
-      setIsNavVisible(false);
-      navContainerRef.current.classList.add("floating-nav");
-    } else if (currentScrollY < lastScrollY) {
-      // Scrolling up: show navbar with floating-nav
+    if (currentScrollY > window.innerHeight * 0.8) {
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down after hero: hide navbar and apply floating-nav
+        setIsNavVisible(false);
+        navContainerRef.current?.classList.add("floating-nav");
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up: show navbar with floating-nav
+        setIsNavVisible(true);
+        navContainerRef.current?.classList.add("floating-nav");
+      }
+    } else {
+      // In hero section: always show navbar
       setIsNavVisible(true);
-      navContainerRef.current.classList.add("floating-nav");
+      navContainerRef.current?.classList.remove("floating-nav");
     }
 
     setLastScrollY(currentScrollY);

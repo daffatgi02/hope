@@ -10,7 +10,8 @@ This is a React + Vite project for an "awwwards-website" - a modern, animated we
 
 - `npm run build` - Build for production
 - `npm run lint` - Run ESLint for code quality
-dont run commands npm run dev or preview.
+- `npm run serve` - Build and serve production preview
+- Do not run `npm run dev` or `npm run preview` commands directly
 
 ## Tech Stack & Key Dependencies
 
@@ -18,6 +19,8 @@ dont run commands npm run dev or preview.
 - **GSAP** (@gsap/react) for animations and ScrollTrigger
 - **Tailwind CSS** for styling with custom design system
 - **ESLint** with React, React Hooks, and Tailwind plugins
+- **Prettier** for code formatting
+- **Additional utilities**: clsx for conditional classes, react-icons for icons, react-use for hooks
 
 ## Architecture
 
@@ -26,22 +29,25 @@ The app follows a single-page layout with main sections as components:
 - `App.jsx` - Main layout container with section components
 - `NavBar` - Navigation header
 - `Hero` - Landing section with video and GSAP animations
-- `About`, `Features`, `Story` - Content sections
+- `About`, `Features`, `Story`, `Leaders` - Content sections
 - `Contact`, `Footer` - Bottom sections
-- `AnimatedTitle` - Reusable animated text component
+- `AnimatedTitle` - Reusable animated text component with scroll-triggered animations
 - `VideoPreview`, `Button` - UI components
 
 ### Styling System
-- Custom Tailwind config with blue-themed color palette
-- Primary colors: `#0094FF` (primary blue), `#4CC9F0` (light), `#0A192F` (dark navy)
+- Custom Tailwind config with red-themed color palette
+- Primary colors: `#8B0000` (main brand red), `#A50000` (lighter red), `#660000` (darker red), `#4D0000` (darkest red)
+- Secondary colors: `#DC143C` (crimson), `#FF1744` (bright red), `#B71C1C` (dark crimson)
+- Background gradient: `linear-gradient(135deg, #8B0000 0%, #660000 50%, #4D0000 100%)`
 - Custom fonts: General Sans (main), plus circular-web, zentry, robert variants
 - Font assets stored in `/public/fonts/`
 
 ### Animation Architecture
 - GSAP with ScrollTrigger for scroll-based animations
-- Hero component uses complex GSAP animations with video masks
-- AnimatedTitle component provides reusable text animations
-- useGSAP hook for React integration
+- Hero component uses complex GSAP animations with video masks and mouse parallax effects
+- AnimatedTitle component provides reusable text animations that trigger on scroll (words animate in with opacity and 3D transforms)
+- useGSAP hook for React integration and proper cleanup
+- Animation patterns: scroll-triggered reveals, parallax mouse tracking, staggered text animations
 
 ## Build Configuration
 
