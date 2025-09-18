@@ -135,7 +135,7 @@ const SliderNavigation = ({ currentIndex, totalSlides, onPrevious, onNext, disab
       <button
         onClick={onPrevious}
         disabled={disabled}
-        className="group flex items-center justify-center w-10 h-10 rounded-full bg-primary-red/20 border border-primary-red/30 text-primary-light hover:bg-primary-red/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="group flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/30 text-text-primary hover:bg-white/20 hover:border-white/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         aria-label="Previous organization"
       >
         <FiChevronLeft className="w-5 h-5 group-hover:transform group-hover:-translate-x-0.5 transition-transform duration-200" />
@@ -147,8 +147,8 @@ const SliderNavigation = ({ currentIndex, totalSlides, onPrevious, onNext, disab
             key={index}
             className={`h-2 rounded-full transition-all duration-300 ${
               index === currentIndex
-                ? 'w-8 bg-primary-red'
-                : 'w-2 bg-primary-red/30 hover:bg-primary-red/50'
+                ? 'w-8 bg-accent-red'
+                : 'w-2 bg-white/30 hover:bg-white/50'
             }`}
           />
         ))}
@@ -157,7 +157,7 @@ const SliderNavigation = ({ currentIndex, totalSlides, onPrevious, onNext, disab
       <button
         onClick={onNext}
         disabled={disabled}
-        className="group flex items-center justify-center w-10 h-10 rounded-full bg-primary-red/20 border border-primary-red/30 text-primary-light hover:bg-primary-red/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="group flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/30 text-text-primary hover:bg-white/20 hover:border-white/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         aria-label="Next organization"
       >
         <FiChevronRight className="w-5 h-5 group-hover:transform group-hover:translate-x-0.5 transition-transform duration-200" />
@@ -244,14 +244,14 @@ const LeaderSection = ({ data, showSeparator = true }) => {
           />
 
           <div className="space-y-4">
-            <p className="text-white/90 text-base md:text-lg leading-relaxed mb-6">
+            <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6">
               {currentOrg.description}
             </p>
 
             <div className="text-sm">
               <div className="flex justify-between">
-                <span className="text-neutral-gray">Anggota:</span>
-                <span className="text-primary-light font-medium">{currentOrg.members}</span>
+                <span className="text-text-muted">Anggota:</span>
+                <span className="text-accent-red font-medium">{currentOrg.members}</span>
               </div>
             </div>
           </div>

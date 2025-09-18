@@ -27,7 +27,7 @@ const About = () => {
   });
 
   return (
-    <div id="about" className="min-h-screen w-screen">
+    <div id="about" className="min-h-screen w-screen bg-background-light">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <p className="font-general text-sm uppercase text-neutral-gray md:text-[10px]">
           Welcome to IME Roleplay

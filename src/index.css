@@ -176,7 +176,7 @@ body {
 .three-body {
   --uib-size: 35px;
   --uib-speed: 0.8s;
-  --uib-color: #0094FF;
+  --uib-color: #FF4444;
   position: relative;
   display: inline-block;
   height: var(--uib-size);
@@ -318,7 +318,7 @@ body {
 @layer components {
   .leaders-wrapper {
     @apply relative w-full min-h-screen;
-    background: linear-gradient(180deg, #0A192F 0%, rgba(10,25,47,0.95) 100%);
+    background: linear-gradient(180deg, rgba(139, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.05) 100%);
   }
 
   /* Container system matching site-wide standards */
@@ -339,7 +339,7 @@ body {
       @apply lg:col-span-5 xl:col-span-4;
       @apply flex flex-col justify-center;
       @apply px-4 md:px-0;
-      background: radial-gradient(ellipse at left, rgba(10,25,47,0.9) 20%, transparent 70%);
+      background: radial-gradient(ellipse at left, rgba(139, 0, 0, 0.15) 20%, transparent 70%);
     }
 
     .img-gallery {
@@ -349,21 +349,21 @@ body {
     }
 
     h1 {
-      @apply text-primary-light font-zentry uppercase;
+      @apply text-text-primary font-zentry uppercase;
       @apply text-4xl md:text-6xl lg:text-7xl xl:text-8xl;
       @apply mb-6 md:mb-8 lg:mb-12;
       @apply leading-tight tracking-tight;
     }
 
     h2 {
-      @apply text-primary-red font-medium;
+      @apply text-accent-red font-medium;
       @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl;
       @apply mb-4 md:mb-6 lg:mb-8;
       @apply leading-snug max-w-lg;
     }
 
     p {
-      @apply text-white/90 font-light;
+      @apply text-text-secondary font-light;
       @apply text-base md:text-lg lg:text-xl;
       @apply leading-relaxed max-w-md;
       @apply mb-8 md:mb-12;
@@ -373,26 +373,29 @@ body {
       @apply col-span-1 row-span-2;
       @apply bg-gradient-to-br from-primary-red/30 to-primary-red/10;
       @apply rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden;
-      @apply border border-primary-red/20;
+      @apply border border-white/20 shadow-lg hover:shadow-xl;
       @apply aspect-[3/4] lg:aspect-[2/3];
+      @apply transition-all duration-300 hover:border-white/40;
     }
 
     .jason-2 {
       @apply col-span-1 row-span-1;
       @apply bg-gradient-to-br from-primary-red/25 to-primary-red/5;
       @apply rounded-lg md:rounded-xl overflow-hidden;
-      @apply border border-primary-red/15;
+      @apply border border-white/15 shadow-md hover:shadow-lg;
       @apply aspect-square md:aspect-[4/3];
       @apply self-start mt-8 lg:mt-16;
+      @apply transition-all duration-300 hover:border-white/30;
     }
 
     .jason-3 {
       @apply col-span-1 row-span-1;
       @apply bg-gradient-to-br from-primary-red/20 to-primary-red/5;
       @apply rounded-lg md:rounded-xl overflow-hidden;
-      @apply border border-primary-red/10;
+      @apply border border-white/10 shadow-sm hover:shadow-md;
       @apply aspect-[4/3];
       @apply self-end;
+      @apply transition-all duration-300 hover:border-white/25;
     }
 
     .jason-1 img, .jason-2 img, .jason-3 img {
@@ -429,21 +432,21 @@ body {
     }
 
     h1 {
-      @apply text-primary-light font-zentry uppercase;
+      @apply text-text-primary font-zentry uppercase;
       @apply text-4xl md:text-6xl lg:text-7xl xl:text-8xl;
       @apply mb-6 md:mb-8 lg:mb-12;
       @apply leading-tight tracking-tight;
     }
 
     h2 {
-      @apply text-primary-red font-medium;
+      @apply text-accent-red font-medium;
       @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl;
       @apply mb-4 md:mb-6 lg:mb-8;
       @apply leading-snug max-w-lg;
     }
 
     p {
-      @apply text-white/90 font-light;
+      @apply text-text-secondary font-light;
       @apply text-base md:text-lg lg:text-xl;
       @apply leading-relaxed max-w-md;
       @apply mb-6 md:mb-8;

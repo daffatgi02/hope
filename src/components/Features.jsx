@@ -13,7 +13,7 @@ const FEATURES_DATA = [
       </>
     ),
     description: 'Sistem polisi yang realistis dengan ranking, investigasi kriminal, dan patroli rutin untuk menjaga keamanan kota.',
-    className: 'border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]'
+    className: 'relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh] border border-white/20'
   },
   {
     id: 'gang',
@@ -24,7 +24,7 @@ const FEATURES_DATA = [
       </>
     ),
     description: 'Berbagai peluang bisnis mulai dari toko, restoran, bengkel, hingga perusahaan besar dengan sistem ekonomi yang realistis.',
-    className: 'bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2'
+    className: 'bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 border border-white/20'
   },
   {
     id: 'cartel',
@@ -35,7 +35,7 @@ const FEATURES_DATA = [
       </>
     ),
     description: 'Sistem gang dan organisasi kriminal dengan hierarki, territori, dan konflik yang menambah dinamika roleplay.',
-    className: 'bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0'
+    className: 'bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0 border border-white/20'
   },
   {
     id: 'mafia',
@@ -46,7 +46,7 @@ const FEATURES_DATA = [
       </>
     ),
     description: 'Sistem properti lengkap dengan pembelian rumah, apartemen, dan bisnis properti yang dapat dikustomisasi.',
-    className: 'bento-tilt_1 me-14 md:col-span-1 md:me-0'
+    className: 'bento-tilt_1 me-14 md:col-span-1 md:me-0 border border-white/20'
   }
 ];
 
@@ -167,7 +167,7 @@ export const BentoCard = ({ src, title, description, isComingSoon, onCtaClick })
             onClick={onCtaClick}
             role="button"
             tabIndex={0}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full border-primary-light/30 bg-primary-red/20 px-5 py-2 text-xs uppercase text-primary-light backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary-light/60"
+            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full border-white/30 bg-white/10 px-5 py-2 text-xs uppercase text-text-primary backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/60 hover:bg-white/20 hover:border-white/50 transition-all duration-300"
           >
             <div
               className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
@@ -237,7 +237,7 @@ const Features = () => {
   }, [selected]);
 
   return (
-    <section className="bg-background-primary pb-52 features-fade">
+    <section className="bg-background-light pb-52 features-fade">
       <div className="container mx-auto px-3 md:px-10">
         <header className="px-5 py-32">
           <p className="font-circular-web text-lg text-text-primary">

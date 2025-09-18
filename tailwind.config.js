@@ -27,6 +27,7 @@ export default {
           gradient: "linear-gradient(135deg, #8B0000 0%, #660000 50%, #4D0000 100%)",
           card: "#A50000",     // Card backgrounds
           dark: "#330000",     // Darkest sections
+          light: "rgba(139, 0, 0, 0.1)",  // Very light red untuk sections
         },
         text: {
           primary: "#FFFFFF",  // Main white text

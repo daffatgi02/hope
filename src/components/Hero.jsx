@@ -183,11 +183,11 @@ const Hero = () => {
   return (
     <section
       ref={heroSectionRef}
-      className="hero-section relative w-dvw h-dvh overflow-hidden bg-dark-navy"
+      className="hero-section relative w-dvw h-dvh overflow-hidden bg-background-light"
       onMouseMove={handleMouseMove}
     >
       {loading && (
-        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-dark-navy">
+        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-background-light">
           <div className="three-body">
             <div className="three-body__dot"></div>
             <div className="three-body__dot"></div>
@@ -222,9 +222,6 @@ const Hero = () => {
             alt="IME Logo"
             className="w-28 h-28 lg:w-40 lg:h-40 xl:w-52 xl:h-52 object-contain mb-6 transition-all duration-1000 drop-shadow-2xl"
           />
-          <div className="text-lg lg:text-xl xl:text-2xl font-general text-white/90 tracking-widest uppercase transition-all duration-700">
-           IME Roleplay
-          </div>
         </div>
       </div>
 
@@ -239,16 +236,13 @@ const Hero = () => {
             alt="IME Logo"
             className="w-28 h-28 lg:w-40 lg:h-40 xl:w-52 xl:h-52 object-contain mb-6 transition-all duration-1000 drop-shadow-2xl brightness-150 contrast-125"
           />
-          <div className="text-lg lg:text-xl xl:text-2xl font-general text-white tracking-widest uppercase transition-all duration-700">
-            IME Roleplay
-          </div>
         </div>
       </div>
 
       {/* Smooth Entrance Message */}
       <div
         ref={entranceMessageRef}
-        className="absolute inset-0 w-full h-dvh overflow-hidden z-50 bg-dark-navy"
+        className="absolute inset-0 w-full h-dvh overflow-hidden z-50 bg-background-light"
       >
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center mouse-parallax-slow flex flex-col items-center">
